@@ -1,14 +1,14 @@
 default: &default
-  adapter: postgresql
+  adapter: mysql2
   pool: 5
-  host: ec2-54-235-134-167.compute-1.amazonaws.com
-  username: vwmrsjscwbqazt
-  password: GJy57FRrOgdzBFxVQUVj7hYk8b
+  username: root
+  password: thdtdnq
   timeout: 5000
-
+  host: 52.26.56.83
+  port: 3306
 development:
   <<: *default
-  database: dnghm6j4l9a0a
+  database: animal/development.mysql2
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -19,4 +19,4 @@ test:
 
 production:
   <<: *default
-  database: dnghm6j4l9a0a
+  database: animal/development.mysql2
