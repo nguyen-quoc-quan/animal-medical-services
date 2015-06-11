@@ -1,4 +1,26 @@
 Rails.application.routes.draw do
+  resources :import_details
+
+  resources :imports
+
+  resources :bill_details
+
+  resources :bills
+
+  resources :food_categories
+
+  resources :food_types
+
+  resources :medicine_types
+
+  resources :foods
+
+  resources :medicine_categories
+
+  resources :animal_groups
+
+  resources :customers
+
   resources :medicines
 
   devise_for :users

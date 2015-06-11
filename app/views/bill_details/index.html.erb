@@ -1,0 +1,31 @@
+<h1>Listing bill_details</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Bill</th>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Sale price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bill_details.each do |bill_detail| %>
+      <tr>
+        <td><%= bill_detail.bill_id %></td>
+        <td><%= bill_detail.product_id %></td>
+        <td><%= bill_detail.quantity %></td>
+        <td><%= bill_detail.sale_price %></td>
+        <td><%= link_to 'Show', bill_detail %></td>
+        <td><%= link_to 'Edit', edit_bill_detail_path(bill_detail) %></td>
+        <td><%= link_to 'Destroy', bill_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bill detail', new_bill_detail_path %>

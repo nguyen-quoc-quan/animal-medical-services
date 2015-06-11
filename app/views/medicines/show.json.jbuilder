@@ -1,1 +1,1 @@
-json.extract! @medicine, :id, :name, :quality, :org_price, :sale_price, :created_at, :updated_at
+json.extract! @medicine, :id, :name, :medicine_category_id, :medicine_type_id, :description, :created_at, :updated_at

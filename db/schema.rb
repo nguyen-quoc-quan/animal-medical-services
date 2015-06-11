@@ -11,7 +11,103 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150601183207) do
+ActiveRecord::Schema.define(version: 20150610020758) do
+
+  create_table "animal_groups", force: true do |t|
+    t.integer  "customer_id"
+    t.integer  "quantity",    default: 0
+    t.date     "begin_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bill_details", force: true do |t|
+    t.integer  "bill_id"
+    t.integer  "product_id"
+    t.integer  "quantity",                              default: 0
+    t.decimal  "sale_price",    precision: 9, scale: 2, default: 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "billable_id"
+    t.string   "billable_type"
+  end
+
+  create_table "bills", force: true do |t|
+    t.integer  "customer_id"
+    t.date     "sale_date"
+    t.decimal  "pay",         precision: 9, scale: 2, default: 0.0
+    t.decimal  "owe",         precision: 9, scale: 2, default: 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "customers", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "food_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "food_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "foods", force: true do |t|
+    t.string   "name"
+    t.integer  "food_category_id"
+    t.integer  "food_type_id"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "import_details", force: true do |t|
+    t.integer  "import_id"
+    t.integer  "product_id"
+    t.integer  "quantity",                                default: 0
+    t.decimal  "import_price",    precision: 9, scale: 2, default: 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "importable_id"
+    t.string   "importable_type"
+  end
+
+  create_table "imports", force: true do |t|
+    t.date     "import_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "medicine_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "medicine_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "medicines", force: true do |t|
+    t.string   "name"
+    t.integer  "medicine_category_id"
+    t.integer  "medicine_type_id"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

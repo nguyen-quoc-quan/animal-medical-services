@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @animal_group.customer_id %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @animal_group.quantity %>
+</p>
+
+<p>
+  <strong>Begin date:</strong>
+  <%= @animal_group.begin_date %>
+</p>
+
+<%= link_to 'Edit', edit_animal_group_path(@animal_group) %> |
+<%= link_to 'Back', animal_groups_path %>

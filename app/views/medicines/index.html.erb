@@ -4,9 +4,9 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Quality</th>
-      <th>Org price</th>
-      <th>Sale price</th>
+      <th>Medicine category</th>
+      <th>Medicine type</th>
+      <th>Description</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,9 +15,9 @@
     <% @medicines.each do |medicine| %>
       <tr>
         <td><%= medicine.name %></td>
-        <td><%= medicine.quality %></td>
-        <td><%= medicine.org_price %></td>
-        <td><%= medicine.sale_price %></td>
+        <td><%= medicine.medicine_category_id %></td>
+        <td><%= medicine.medicine_type_id %></td>
+        <td><%= medicine.description %></td>
         <td><%= link_to 'Show', medicine %></td>
         <td><%= link_to 'Edit', edit_medicine_path(medicine) %></td>
         <td><%= link_to 'Destroy', medicine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
