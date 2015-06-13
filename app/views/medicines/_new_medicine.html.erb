@@ -1,0 +1,37 @@
+<div class="modal inmodal" id="newMedicine" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content animated bounceInRight">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">New Medicine</h4>
+      </div>
+      <div class="modal-body">
+        <div id="new-medicine-message"></div>
+        <%=form_for @medicine, url: medicines_path ,html: {class: 'm-t form-horizontal', id: 'medicine-form', method: 'post'} do |f|%>
+          <div class="form-group">
+            <label class="col-lg-2 control-label">Name</label>
+            <div class="col-lg-10"><%=f.text_field :name, class: 'form-control', :required => true%></div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-2 control-label">Category</label>
+            <div class="col-lg-10"><%=f.select :medicine_category_id, options_for_select(@categories_select),{}, class: 'form-control'%></div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-2 control-label">Type</label>
+            <div class="col-lg-10"><%=f.select :medicine_type_id, options_for_select(@types_select), {},class: 'form-control', :required => true%></div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-2 control-label">Description</label>
+            <div class="col-lg-10"><%=f.text_field :description, class: 'form-control', id: 'new-sku-eta'%></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-white" data-dismiss="modal">Cancel</button>
+            <button type="button" id="create-medicine" class="btn btn-primary">Create</button>
+          </div>
+        <%end%>
+
+      </div>
+
+    </div>
+  </div>
+</div>
