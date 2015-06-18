@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Capacity:</strong>
+  <%= @medicine_specification.capacity %>
+</p>
+
+<p>
+  <strong>Medicine specification types:</strong>
+  <%= @medicine_specification.medicine_specification_types_id %>
+</p>
+
+<%= link_to 'Edit', edit_medicine_specification_path(@medicine_specification) %> |
+<%= link_to 'Back', medicine_specifications_path %>

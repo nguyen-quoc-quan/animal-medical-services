@@ -21,9 +21,15 @@ class MedicineCategoriesController < ApplicationController
   end
 
   def create
-    @medicine_category = MedicineCategory.new(medicine_category_params)
-    @medicine_category.save
-    respond_with(@medicine_category)
+    medicine_category = MedicineCategory.new(medicine_category_params)
+    medicine_category.save
+    if medicine_category.errors.messages.blank?
+      success_message = "<li>Created successfully!</li>"
+      render json: {messages: success_message, category: medicine_category}, status: 200
+    else
+      error_messages = medicine_category.errors.full_messages.map{|err| "<li>#{err}</li>"}
+      render json: {messages: error_messages.join("")}, status: 422
+    end
   end
 
   def update

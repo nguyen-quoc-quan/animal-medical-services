@@ -1,8 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Import date:</strong>
-  <%= @import.import_date %>
+  <strong>Import at:</strong>
+  <%= @import.import_at %>
+</p>
+
+<p>
+  <strong>Pay:</strong>
+  <%= @import.pay %>
+</p>
+
+<p>
+  <strong>Owe:</strong>
+  <%= @import.owe %>
 </p>
 
 <%= link_to 'Edit', edit_import_path(@import) %> |

@@ -11,6 +11,9 @@ var Medicine = {
 	init: function(){
 		this.load_list();
 		this.create_medicine();
+		this.create_medicine_specification();
+		this.create_medicine_category();
+		this.init_radio_create_specification();
 	},
 	load_list: function(){
 		var url = $('#medicines-list').data('target');
@@ -82,41 +85,134 @@ var Medicine = {
 	  create_medicine:function(){
     $('#create-medicine').click(function(){
       $.ajax({
-            type: "POST",
-            url: '/medicines',
-            beforeSend: function(xhr) {
-              xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
-            },
-            data: $('#medicine-form').serialize(),
-            dataType: 'json',
-            success: function(data){
-              // $('#newSku').fadeOut('slow');
-              $('#newMedicine').modal('hide');
-              $('#medicine-form')[0].reset();
-              $('#new-medicine-message').html('');
-              success_msg = data.messages;
-              success_html = '<div class="alert alert-success alert-dismissable">' +
-              '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
-              '<ul>'+
-              success_msg +
-              '</ul>' +
-              '</div>' ;
-              $('#alert-message').html(success_html);
-              $('#medicines-list').DataTable().draw();
-            },
-            error: function(data){
-              error_html = '<div class="alert alert-danger alert-dismissable">' +
-              '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
-              '<ul>'+
-              data.responseJSON.messages +
-              '</ul>' +
-              '</div>'
-              $('#new-medicine-message').html(error_html);}
-    });
+        type: "POST",
+        url: '/medicines',
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+        },
+        data: $('#medicine-form').serialize(),
+        dataType: 'json',
+        success: function(data){
+          // $('#newSku').fadeOut('slow');
+          $('#newMedicine').modal('hide');
+          $('#medicine-form')[0].reset();
+          $('#new-medicine-message').html('');
+          success_msg = data.messages;
+          success_html = '<div class="alert alert-success alert-dismissable">' +
+          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+          '<ul>'+
+          success_msg +
+          '</ul>' +
+          '</div>' ;
+          $('#alert-message').html(success_html);
+          $('#medicines-list').DataTable().draw();
+        },
+        error: function(data){
+          error_html = '<div class="alert alert-danger alert-dismissable">' +
+          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+          '<ul>'+
+          data.responseJSON.messages +
+          '</ul>' +
+          '</div>'
+          $('#new-medicine-message').html(error_html);}
+    	});
     });
   },
+  create_medicine_specification:function(){
+    $('#create-medicine-specification').click(function(){
+      $.ajax({
+        type: "POST",
+        url: '/medicine_specifications',
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+        },
+        data: $('#specification-form').serialize(),
+        dataType: 'json',
+        success: function(data){
+          // $('#newSku').fadeOut('slow');
+          $('#newSpecification').modal('hide');
+          $('#specification-form')[0].reset();
+          $('#new-medicine-message').html('');
+          success_msg = data.messages;
+          success_html = '<div class="alert alert-success alert-dismissable">' +
+          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+          '<ul>'+
+          success_msg +
+          '</ul>' +
+          '</div>' ;
+          $('#alert-message').html(success_html);
+          $('select#medicine_medicine_specification_id').prepend("<option value = '"+data.specification.id+"'>"+data.specification.name+"</option>");
+        },
+        error: function(data){
+          error_html = '<div class="alert alert-danger alert-dismissable">' +
+          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+          '<ul>'+
+          data.responseJSON.messages +
+          '</ul>' +
+          '</div>'
+          $('#new-medicine-message').html(error_html);}
+    	});
+    });
+  },
+  create_medicine_category:function(){
+    $('#create-medicine-category').click(function(){
+      $.ajax({
+        type: "POST",
+        url: '/medicine_categories',
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+        },
+        data: $('#category-form').serialize(),
+        dataType: 'json',
+        success: function(data){
+          // $('#newSku').fadeOut('slow');
+          $('#newCategory').modal('hide');
+          $('#category-form')[0].reset();
+          $('#new-medicine-message').html('');
+          success_msg = data.messages;
+          success_html = '<div class="alert alert-success alert-dismissable">' +
+          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+          '<ul>'+
+          success_msg +
+          '</ul>' +
+          '</div>' ;
+          $('#alert-message').html(success_html);
+          $('select#medicine_medicine_category_id').prepend("<option value = '"+data.category.id+"'>"+data.category.name+"</option>");
+        },
+        error: function(data){
+          error_html = '<div class="alert alert-danger alert-dismissable">' +
+          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+          '<ul>'+
+          data.responseJSON.messages +
+          '</ul>' +
+          '</div>'
+          $('#new-medicine-message').html(error_html);}
+    	});
+    });
+  },
+  init_radio_create_specification: function(){
+  	$('#medicine_specification_medicine_specification_type_id').closest('.form-group').hide();
+		$('#medicine_specification_medicine_specification_type_id').attr('disabled', 'disabled');
+		$('.radio.i-checks input[type=radio]').on('ifChecked',function(){
+			if($('.radio.i-checks input[name=specification]:checked').val() == "1"){
+				$('#medicine_specification_medicine_specification_type_attributes_name').closest(".form-group").hide();
+				$('#medicine_specification_medicine_specification_type_attributes_name').attr('disabled', 'disabled');
+				$('#medicine_specification_medicine_specification_type_id').closest('.form-group').show();
+				$('#medicine_specification_medicine_specification_type_id').removeAttr('disabled');
+			}else{
+				$('#medicine_specification_medicine_specification_type_id').closest('.form-group').hide();
+				$('#medicine_specification_medicine_specification_type_id').attr('disabled', 'disabled');
+				$('#medicine_specification_medicine_specification_type_attributes_name').closest(".form-group").show();
+				$('#medicine_specification_medicine_specification_type_attributes_name').removeAttr('disabled');
+			}
+		});
+  }
 };
 
 $(function(){
 	Medicine.init();
+	$('.i-checks').iCheck({
+    checkboxClass: 'icheckbox_square-green',
+    radioClass: 'iradio_square-green',
+	});
 });

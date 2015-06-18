@@ -42,6 +42,6 @@ class AnimalGroupsController < ApplicationController
     end
 
     def animal_group_params
-      params.require(:animal_group).permit(:customer_id, :quantity, :begin_date)
+      params.require(:animal_group).permit(:quantity, :started_at, :customer_id)
     end
 end

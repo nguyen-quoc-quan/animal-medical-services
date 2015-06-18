@@ -3,10 +3,11 @@
 <table>
   <thead>
     <tr>
-      <th>Import</th>
-      <th>Product</th>
       <th>Quantity</th>
-      <th>Import price</th>
+      <th>Price</th>
+      <th>Importable</th>
+      <th>Importable type</th>
+      <th>Import</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,10 +15,11 @@
   <tbody>
     <% @import_details.each do |import_detail| %>
       <tr>
-        <td><%= import_detail.import_id %></td>
-        <td><%= import_detail.product_id %></td>
         <td><%= import_detail.quantity %></td>
-        <td><%= import_detail.import_price %></td>
+        <td><%= import_detail.price %></td>
+        <td><%= import_detail.importable_id %></td>
+        <td><%= import_detail.importable_type %></td>
+        <td><%= import_detail.import_id %></td>
         <td><%= link_to 'Show', import_detail %></td>
         <td><%= link_to 'Edit', edit_import_detail_path(import_detail) %></td>
         <td><%= link_to 'Destroy', import_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>

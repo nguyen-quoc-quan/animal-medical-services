@@ -6,18 +6,23 @@
 </p>
 
 <p>
-  <strong>Medicine category:</strong>
-  <%= @medicine.medicine_category_id %>
-</p>
-
-<p>
-  <strong>Medicine type:</strong>
-  <%= @medicine.medicine_type_id %>
-</p>
-
-<p>
   <strong>Description:</strong>
   <%= @medicine.description %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @medicine.quantity %>
+</p>
+
+<p>
+  <strong>Medicine specifications:</strong>
+  <%= @medicine.medicine_specifications_id %>
+</p>
+
+<p>
+  <strong>Medicine categories:</strong>
+  <%= @medicine.medicine_categories_id %>
 </p>
 
 <%= link_to 'Edit', edit_medicine_path(@medicine) %> |

@@ -1,0 +1,27 @@
+<h1>Listing food_specifications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Capacity</th>
+      <th>Food specification types</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @food_specifications.each do |food_specification| %>
+      <tr>
+        <td><%= food_specification.capacity %></td>
+        <td><%= food_specification.food_specification_types_id %></td>
+        <td><%= link_to 'Show', food_specification %></td>
+        <td><%= link_to 'Edit', edit_food_specification_path(food_specification) %></td>
+        <td><%= link_to 'Destroy', food_specification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Food specification', new_food_specification_path %>

@@ -1,0 +1,24 @@
+<%=form_for @sale, html: {class: 'm-t form-horizontal', id: 'sale-form', method: 'post'} do |f|%>
+  <div class="form-group">
+    <label class="col-lg-2 control-label">Date</label>
+    <div class="col-lg-10"><%=f.text_field :sale_at, class: 'form-control', :required => true%></div>
+  </div>
+  <div class="form-group">
+  <label class="col-lg-2 control-label">Customer</label>
+  <div class="col-lg-10"><%=f.select :customer_id, options_for_select(@customers_select),{include_blank: false}, class: 'form-control'%></div>
+</div>
+  <div class="form-group">
+    <label class="col-lg-2 control-label">Pay</label>
+    <div class="col-lg-10"><%=f.number_field :pay, class: 'form-control', :required => true%></div>
+  </div>
+
+  <%#= f.fields_for :sale_details do |ff| %>
+  	<%#= render 'sale_detail', locals: {ff: ff}%>
+  <%#end%>
+  <%= link_to_add_fields "Add Product", f, :sale_details %>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-white" data-dismiss="modal">Cancel</button>
+    <button type="button" id="create-medicine" class="btn btn-primary">Create</button>
+  </div>
+<%end%>

@@ -16,16 +16,20 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :food_category_id %><br>
-    <%= f.number_field :food_category_id %>
-  </div>
-  <div class="field">
-    <%= f.label :food_type_id %><br>
-    <%= f.number_field :food_type_id %>
-  </div>
-  <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br>
+    <%= f.number_field :quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :food_specifications_id %><br>
+    <%= f.number_field :food_specifications_id %>
+  </div>
+  <div class="field">
+    <%= f.label :food_categories_id %><br>
+    <%= f.number_field :food_categories_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

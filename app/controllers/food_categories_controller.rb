@@ -21,9 +21,15 @@ class FoodCategoriesController < ApplicationController
   end
 
   def create
-    @food_category = FoodCategory.new(food_category_params)
-    @food_category.save
-    respond_with(@food_category)
+    food_category = FoodCategory.new(food_category_params)
+    food_category.save
+    if food_category.errors.messages.blank?
+      success_message = "<li>Created successfully!</li>"
+      render json: {messages: success_message, category: food_category}, status: 200
+    else
+      error_messages = food_category.errors.full_messages.map{|err| "<li>#{err}</li>"}
+      render json: {messages: error_messages.join("")}, status: 422
+    end
   end
 
   def update

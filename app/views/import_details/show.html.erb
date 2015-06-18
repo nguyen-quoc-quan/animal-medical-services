@@ -1,23 +1,28 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Import:</strong>
-  <%= @import_detail.import_id %>
-</p>
-
-<p>
-  <strong>Product:</strong>
-  <%= @import_detail.product_id %>
-</p>
-
-<p>
   <strong>Quantity:</strong>
   <%= @import_detail.quantity %>
 </p>
 
 <p>
-  <strong>Import price:</strong>
-  <%= @import_detail.import_price %>
+  <strong>Price:</strong>
+  <%= @import_detail.price %>
+</p>
+
+<p>
+  <strong>Importable:</strong>
+  <%= @import_detail.importable_id %>
+</p>
+
+<p>
+  <strong>Importable type:</strong>
+  <%= @import_detail.importable_type %>
+</p>
+
+<p>
+  <strong>Import:</strong>
+  <%= @import_detail.import_id %>
 </p>
 
 <%= link_to 'Edit', edit_import_detail_path(@import_detail) %> |

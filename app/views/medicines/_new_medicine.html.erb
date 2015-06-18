@@ -14,11 +14,11 @@
           </div>
           <div class="form-group">
             <label class="col-lg-2 control-label">Category</label>
-            <div class="col-lg-10"><%=f.select :medicine_category_id, options_for_select(@categories_select),{}, class: 'form-control'%></div>
+            <div class="col-lg-10"><%=f.select :medicine_category_id, options_for_select(@categories_select),{include_blank: false}, class: 'form-control'%></div>
           </div>
           <div class="form-group">
-            <label class="col-lg-2 control-label">Type</label>
-            <div class="col-lg-10"><%=f.select :medicine_type_id, options_for_select(@types_select), {},class: 'form-control', :required => true%></div>
+            <label class="col-lg-2 control-label">Specification</label>
+            <div class="col-lg-10"><%=f.select :medicine_specification_id, options_for_select(@specifications_select), {include_blank: false},class: 'form-control', :required => true%></div>
           </div>
           <div class="form-group">
             <label class="col-lg-2 control-label">Description</label>

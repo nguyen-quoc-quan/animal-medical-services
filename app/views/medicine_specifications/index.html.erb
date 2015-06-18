@@ -1,0 +1,27 @@
+<h1>Listing medicine_specifications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Capacity</th>
+      <th>Medicine specification types</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @medicine_specifications.each do |medicine_specification| %>
+      <tr>
+        <td><%= medicine_specification.capacity %></td>
+        <td><%= medicine_specification.medicine_specification_types_id %></td>
+        <td><%= link_to 'Show', medicine_specification %></td>
+        <td><%= link_to 'Edit', edit_medicine_specification_path(medicine_specification) %></td>
+        <td><%= link_to 'Destroy', medicine_specification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Medicine specification', new_medicine_specification_path %>

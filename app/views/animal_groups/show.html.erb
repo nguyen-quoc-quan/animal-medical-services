@@ -1,18 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Customer:</strong>
-  <%= @animal_group.customer_id %>
-</p>
-
-<p>
   <strong>Quantity:</strong>
   <%= @animal_group.quantity %>
 </p>
 
 <p>
-  <strong>Begin date:</strong>
-  <%= @animal_group.begin_date %>
+  <strong>Started at:</strong>
+  <%= @animal_group.started_at %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @animal_group.customer_id %>
 </p>
 
 <%= link_to 'Edit', edit_animal_group_path(@animal_group) %> |

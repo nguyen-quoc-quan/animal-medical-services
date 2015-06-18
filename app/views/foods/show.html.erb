@@ -6,18 +6,23 @@
 </p>
 
 <p>
-  <strong>Food category:</strong>
-  <%= @food.food_category_id %>
-</p>
-
-<p>
-  <strong>Food type:</strong>
-  <%= @food.food_type_id %>
-</p>
-
-<p>
   <strong>Description:</strong>
   <%= @food.description %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @food.quantity %>
+</p>
+
+<p>
+  <strong>Food specifications:</strong>
+  <%= @food.food_specifications_id %>
+</p>
+
+<p>
+  <strong>Food categories:</strong>
+  <%= @food.food_categories_id %>
 </p>
 
 <%= link_to 'Edit', edit_food_path(@food) %> |

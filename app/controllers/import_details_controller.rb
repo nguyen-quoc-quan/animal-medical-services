@@ -42,6 +42,6 @@ class ImportDetailsController < ApplicationController
     end
 
     def import_detail_params
-      params.require(:import_detail).permit(:import_id, :product_id, :quantity, :import_price)
+      params.require(:import_detail).permit(:quantity, :price, :importable_id, :importable_type, :import_id)
     end
 end

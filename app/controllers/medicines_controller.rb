@@ -1,26 +1,20 @@
 class MedicinesController < ApplicationController
   before_action :set_medicine, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html, :json
+  respond_to :html
 
   def index
     if request.xhr?
       page = params[:page].to_i || 0
       per_page = params[:per_page].to_i || 10
-      # skus = Medicine.accessible_by(current_ability, params[:action].to_sym)
-      medicines = Medicine.all#limit(per_page)#.skip(page)
-      # medicines =  medicines.search(params)
-      # medicines =  medicines.my_sort(params)
-      # medicines =  medicines.limit(per_page)#.skip(page)
-      p "================"
-      p medicines
+      medicines = Medicine.all
       data = []
       medicines.each do |m|
         data << {
           id: m.id,
           name: m.name,
           category: m.medicine_category.name,
-          type: m.medicine_type.name
+          type: m.medicine_specification.medicine_specification_type.name
         }
       end
       total_medicines =  medicines.count
@@ -28,7 +22,11 @@ class MedicinesController < ApplicationController
     else
       @medicine = Medicine.new
       @categories_select = MedicineCategory.all.collect{|c| [c.name, c.id]}
-      @types_select = MedicineType.all.collect{|t| [t.name, t.id]}
+      @specifications_select = MedicineSpecification.all.collect{|t| [t.medicine_specification_type.name, t.id]}
+      @specification_types_select = MedicineSpecificationType.all.collect{|t| [t.name, t.id]}
+      @specification = MedicineSpecification.new
+      @specification.medicine_specification_type = MedicineSpecificationType.new
+      @category = MedicineCategory.new
     end
   end
 
@@ -72,6 +70,6 @@ class MedicinesController < ApplicationController
     end
 
     def medicine_params
-      params.require(:medicine).permit(:name, :medicine_category_id, :medicine_type_id, :description)
+      params.require(:medicine).permit(:name, :description, :quantity, :medicine_specification_id, :medicine_category_id)
     end
 end

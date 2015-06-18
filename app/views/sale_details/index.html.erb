@@ -1,0 +1,33 @@
+<h1>Listing sale_details</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Saleable</th>
+      <th>Saleable type</th>
+      <th>Bill</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sale_details.each do |sale_detail| %>
+      <tr>
+        <td><%= sale_detail.quantity %></td>
+        <td><%= sale_detail.price %></td>
+        <td><%= sale_detail.saleable_id %></td>
+        <td><%= sale_detail.saleable_type %></td>
+        <td><%= sale_detail.bill_id %></td>
+        <td><%= link_to 'Show', sale_detail %></td>
+        <td><%= link_to 'Edit', edit_sale_detail_path(sale_detail) %></td>
+        <td><%= link_to 'Destroy', sale_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sale detail', new_sale_detail_path %>

@@ -12,8 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :import_date %><br>
-    <%= f.date_select :import_date %>
+    <%= f.label :import_at %><br>
+    <%= f.date_select :import_at %>
+  </div>
+  <div class="field">
+    <%= f.label :pay %><br>
+    <%= f.text_field :pay %>
+  </div>
+  <div class="field">
+    <%= f.label :owe %><br>
+    <%= f.text_field :owe %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -1,0 +1,18 @@
+
+<div class="form-group">
+  <label class="col-lg-2 control-label">Type</label>
+  <div class="col-lg-10"><%=ff.select :saleable_type, options_for_select([['Food', 'Food'], ['Medicine', 'Medicine']]),{include_blank: false}, class: 'form-control'%></div>
+</div>
+<div class="form-group">
+  <label class="col-lg-2 control-label">Product</label>
+  <div class="col-lg-10"><%=ff.select :saleable_id, options_for_select(foods_select),{include_blank: false}, class: 'form-control'%></div>
+</div>
+<div class="form-group">
+	<label class="col-lg-2 control-label">Quantity</label>
+	<div class="col-lg-10"><%=ff.number_field :quantity, class: 'form-control', :required => true%></div>
+</div>
+
+<div class="form-group">
+	<label class="col-lg-2 control-label">Price</label>
+	<div class="col-lg-10"><%=ff.number_field :price, class: 'form-control', :required => true%></div>
+</div>

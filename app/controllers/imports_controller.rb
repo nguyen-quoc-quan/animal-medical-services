@@ -42,6 +42,6 @@ class ImportsController < ApplicationController
     end
 
     def import_params
-      params.require(:import).permit(:import_date)
+      params.require(:import).permit(:import_at, :pay, :owe)
     end
 end

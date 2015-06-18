@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Capacity:</strong>
+  <%= @food_specification.capacity %>
+</p>
+
+<p>
+  <strong>Food specification types:</strong>
+  <%= @food_specification.food_specification_types_id %>
+</p>
+
+<%= link_to 'Edit', edit_food_specification_path(@food_specification) %> |
+<%= link_to 'Back', food_specifications_path %>

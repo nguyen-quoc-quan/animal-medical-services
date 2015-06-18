@@ -1,0 +1,41 @@
+<div class="modal inmodal" id="newSpecification" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content animated bounceInRight">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">New Medicine Specification</h4>
+      </div>
+      <div class="modal-body">
+        <div id="new-medicine-message"></div>
+        <div class="radio i-checks"><label> <input type="radio" checked="checked" value="0" name="specification" id="create-new-specification"> <i></i>Create New</label></div>
+        <div class="radio i-checks"><label> <input type="radio" value="1" name="specification" id="use-exist-specification"> <i></i>Use exist</label></div>
+        <%=form_for @specification, url: medicine_specifications_path ,html: {class: 'm-t form-horizontal', id: 'specification-form', method: 'post'} do |f|%>
+          <%=f.fields_for :medicine_specification_type do |ff|%>
+            <div class="form-group">
+              <label class="col-lg-2 control-label">Name</label>
+              <div class="col-lg-10">
+                <%=ff.text_field :name, class: 'form-control', :required => true%>
+              </div>
+            </div>
+          <%end%>
+          <div class="form-group">
+            <label class="col-lg-2 control-label">Specification</label>
+            <div class="col-lg-10"><%=f.select :medicine_specification_type_id, options_for_select(@specification_types_select),{include_blank: false}, class: 'form-control'%></div>
+          </div>
+          <div class="form-group">
+              <label class="col-lg-2 control-label">Capacity</label>
+              <div class="col-lg-10">
+                <%=f.text_field :capacity, class: 'form-control', :required => true%>
+              </div>
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-white" data-dismiss="modal">Cancel</button>
+            <button type="button" id="create-medicine-specification" class="btn btn-primary">Create</button>
+          </div>
+        <%end%>
+
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,29 +1,33 @@
 Rails.application.routes.draw do
+
+  resources :food_categories
+
+  resources :medicine_categories
+
+  resources :sale_details
+
   resources :import_details
 
   resources :imports
 
-  resources :bill_details
-
-  resources :bills
-
-  resources :food_categories
-
-  resources :food_types
-
-  resources :medicine_types
-
-  resources :foods
-
-  resources :medicine_categories
+  resources :sales
 
   resources :animal_groups
 
-  resources :customers
+  resources :medicine_specification_types
+
+  resources :medicine_specifications
 
   resources :medicines
 
-  devise_for :users
+  resources :food_specification_types
+
+  resources :food_specifications
+
+  resources :foods
+
+  resources :customers
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

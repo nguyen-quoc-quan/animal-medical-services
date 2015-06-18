@@ -1,1 +1,1 @@
-json.extract! @animal_group, :id, :customer_id, :quantity, :begin_date, :created_at, :updated_at
+json.extract! @animal_group, :id, :quantity, :started_at, :customer_id, :created_at, :updated_at

@@ -16,16 +16,20 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :medicine_category_id %><br>
-    <%= f.number_field :medicine_category_id %>
-  </div>
-  <div class="field">
-    <%= f.label :medicine_type_id %><br>
-    <%= f.number_field :medicine_type_id %>
-  </div>
-  <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br>
+    <%= f.number_field :quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :medicine_specifications_id %><br>
+    <%= f.number_field :medicine_specifications_id %>
+  </div>
+  <div class="field">
+    <%= f.label :medicine_categories_id %><br>
+    <%= f.number_field :medicine_categories_id %>
   </div>
   <div class="actions">
     <%= f.submit %>
