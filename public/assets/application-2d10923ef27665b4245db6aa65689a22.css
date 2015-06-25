@@ -14,6 +14,7 @@
 
 
 
+
  */
 /*!
  *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
@@ -13109,7 +13110,7 @@ h3, h4, h5 {
 
 /* line 149, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/navigation.scss */
 .nav > li.active {
-  border-left: 4px solid #19aa8d;
+  border-left: 4px solid #3a86c8;
   background: #293846;
 }
 
@@ -13262,7 +13263,7 @@ body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
 
 /* line 277, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/navigation.scss */
 .navbar-default .special_link a {
-  background: #1ab394;
+  background: #428bca;
   color: white;
 }
 
@@ -13275,25 +13276,25 @@ body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
 /* line 287, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/navigation.scss */
 .navbar-default .special_link a span.label {
   background: white;
-  color: #1ab394;
+  color: #428bca;
 }
 
 /* line 292, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/navigation.scss */
 .navbar-default .landing_link a {
-  background: #1cc09f;
+  background: #4e92cd;
   color: white;
 }
 
 /* line 297, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/navigation.scss */
 .navbar-default .landing_link a:hover {
-  background: #1ab394 !important;
+  background: #428bca !important;
   color: white;
 }
 
 /* line 302, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/navigation.scss */
 .navbar-default .landing_link a span.label {
   background: white;
-  color: #1cc09f;
+  color: #4e92cd;
 }
 
 /* line 307, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/navigation.scss */
@@ -13380,7 +13381,7 @@ body.canvas-menu .logo-element {
 /* line 374, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/navigation.scss */
 body.mini-navbar .nav-header {
   padding: 0;
-  background-color: #1ab394;
+  background-color: #428bca;
 }
 
 /* line 379, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/navigation.scss */
@@ -13521,7 +13522,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 /* line 6, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/top_navigation.scss */
 .top-navigation .navbar-nav .dropdown-menu > .active > a {
   background: white;
-  color: #1ab394;
+  color: #428bca;
   font-weight: bold;
 }
 
@@ -13544,7 +13545,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 /* line 25, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/top_navigation.scss */
 .top-navigation .nav > li a:hover, .top-navigation .nav > li a:focus {
   background: #fff;
-  color: #1ab394;
+  color: #428bca;
 }
 
 /* line 30, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/top_navigation.scss */
@@ -13555,7 +13556,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 
 /* line 34, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/top_navigation.scss */
 .top-navigation .nav > li.active > a {
-  color: #1ab394;
+  color: #428bca;
 }
 
 /* line 37, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/top_navigation.scss */
@@ -13582,7 +13583,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 
 /* line 55, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/top_navigation.scss */
 .top-navigation .navbar-brand {
-  background: #1ab394;
+  background: #428bca;
   color: #fff;
   padding: 15px 25px;
 }
@@ -13623,7 +13624,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 
 /* line 88, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/top_navigation.scss */
 .navbar-toggle {
-  background-color: #1ab394;
+  background-color: #428bca;
   color: #fff;
   padding: 6px 12px;
   font-size: 14px;
@@ -13686,7 +13687,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 
 /* line 13, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/buttons.scss */
 .btn-primary.btn-outline {
-  color: #1ab394;
+  color: #428bca;
 }
 
 /* line 17, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/buttons.scss */
@@ -13720,15 +13721,15 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 
 /* line 41, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/buttons.scss */
 .btn-primary {
-  background-color: #1ab394;
-  border-color: #1ab394;
+  background-color: #428bca;
+  border-color: #428bca;
   color: white;
 }
 
 /* line 47, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/buttons.scss */
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
-  background-color: #18a689;
-  border-color: #18a689;
+  background-color: #3784c5;
+  border-color: #3784c5;
   color: white;
 }
 
@@ -13739,8 +13740,8 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 
 /* line 57, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/buttons.scss */
 .btn-primary.disabled, .btn-primary.disabled:hover, .btn-primary.disabled:focus, .btn-primary.disabled:active, .btn-primary.disabled.active, .btn-primary[disabled], .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary[disabled]:active, .btn-primary.active[disabled], fieldset[disabled] .btn-primary, fieldset[disabled] .btn-primary:hover, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:active, fieldset[disabled] .btn-primary.active {
-  background-color: #1dc5a3;
-  border-color: #1dc5a3;
+  background-color: #5295ce;
+  border-color: #5295ce;
 }
 
 /* line 62, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/buttons.scss */
@@ -13875,7 +13876,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 
 /* line 171, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/buttons.scss */
 .btn-link:hover, .btn-link:focus, .btn-link:active, .btn-link.active, .open .dropdown-toggle.btn-link {
-  color: #1ab394;
+  color: #428bca;
   text-decoration: none;
 }
 
@@ -13964,12 +13965,12 @@ button.dim:active {
 
 /* line 246, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/buttons.scss */
 button.btn-primary.dim {
-  box-shadow: inset 0px 0px 0px #16987e, 0px 5px 0px 0px #16987e, 0px 10px 5px #999999;
+  box-shadow: inset 0px 0px 0px #347cb9, 0px 5px 0px 0px #347cb9, 0px 10px 5px #999999;
 }
 
 /* line 250, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/buttons.scss */
 button.btn-primary.dim:active {
-  box-shadow: inset 0px 0px 0px #16987e, 0px 2px 0px 0px #16987e, 0px 5px 3px #999999;
+  box-shadow: inset 0px 0px 0px #347cb9, 0px 2px 0px 0px #347cb9, 0px 5px 3px #999999;
 }
 
 /* line 254, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/buttons.scss */
@@ -14064,7 +14065,7 @@ button.dim:active:before {
 
 /* line 23, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/badgets_labels.scss */
 .label-primary, .badge-primary {
-  background-color: #1ab394;
+  background-color: #428bca;
   color: white;
 }
 
@@ -14136,7 +14137,7 @@ button.dim:active:before {
   display: block;
   overflow: hidden;
   cursor: pointer;
-  border: 2px solid #1ab394;
+  border: 2px solid #428bca;
   border-radius: 2px;
 }
 
@@ -14170,7 +14171,7 @@ button.dim:active:before {
 .onoffswitch-inner:before {
   content: "ON";
   padding-left: 10px;
-  background-color: #1ab394;
+  background-color: #428bca;
   color: white;
 }
 
@@ -14188,7 +14189,7 @@ button.dim:active:before {
   width: 20px;
   margin: 0px;
   background: white;
-  border: 2px solid #1ab394;
+  border: 2px solid #428bca;
   border-radius: 2px;
   position: absolute;
   top: 0;
@@ -14365,8 +14366,8 @@ button.dim:active:before {
 
 /* line 227, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/elements.scss */
 .fc-state-active {
-  background-color: #1ab394;
-  border-color: #1ab394;
+  background-color: #428bca;
+  border-color: #428bca;
   color: white;
 }
 
@@ -14411,8 +14412,8 @@ button.dim:active:before {
 .fc-agenda .fc-event-time,
 .fc-event a {
   padding: 4px 6px;
-  background-color: #1ab394;
-  border-color: #1ab394;
+  background-color: #428bca;
+  border-color: #428bca;
 }
 
 /* line 271, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/elements.scss */
@@ -14553,8 +14554,8 @@ button.dim:active:before {
 /* LIST GROUP */
 /* line 385, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/elements.scss */
 a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus {
-  background-color: #1ab394;
-  border-color: #1ab394;
+  background-color: #428bca;
+  border-color: #428bca;
   color: white;
   z-index: 2;
 }
@@ -14892,7 +14893,7 @@ table.dataTable thead .sorting:after {
 
 /* line 684, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/elements.scss */
 .pace .pace-progress {
-  background: #1ab394;
+  background: #428bca;
   position: fixed;
   z-index: 2000;
   top: 0;
@@ -15074,12 +15075,12 @@ table.dataTable thead .sorting:after {
 
 /* line 840, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/elements.scss */
 .form-control:focus, .single-line:focus {
-  border-color: #1ab394 !important;
+  border-color: #428bca !important;
 }
 
 /* line 844, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/elements.scss */
 .has-success .form-control {
-  border-color: #1ab394;
+  border-color: #428bca;
 }
 
 /* line 848, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/elements.scss */
@@ -15094,7 +15095,7 @@ table.dataTable thead .sorting:after {
 
 /* line 856, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/elements.scss */
 .has-success .control-label {
-  color: #1ab394;
+  color: #428bca;
 }
 
 /* line 860, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/elements.scss */
@@ -15132,7 +15133,7 @@ table.dataTable thead .sorting:after {
 
 /* line 888, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/elements.scss */
 .noUi-connect {
-  background: none repeat scroll 0 0 #1ab394;
+  background: none repeat scroll 0 0 #428bca;
   box-shadow: none;
 }
 
@@ -15863,12 +15864,12 @@ label.error {
 
 /* line 1520, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/elements.scss */
 .toast {
-  background-color: #1ab394;
+  background-color: #428bca;
 }
 
 /* line 1524, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/elements.scss */
 .toast-success {
-  background-color: #1ab394;
+  background-color: #428bca;
 }
 
 /* line 1528, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/elements.scss */
@@ -15926,7 +15927,7 @@ label.error {
 
 /* line 1571, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/elements.scss */
 .inspinia-notify.alert-info {
-  border-left: 6px solid #1ab394;
+  border-left: 6px solid #428bca;
 }
 
 /* Image cropper style */
@@ -16090,12 +16091,12 @@ a.forum-item-title:hover {
 
 /* line 1708, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/elements.scss */
 .forum-item.active .fa {
-  color: #1ab394;
+  color: #428bca;
 }
 
 /* line 1712, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/elements.scss */
 .forum-item.active a.forum-item-title {
-  color: #1ab394;
+  color: #428bca;
 }
 
 @media (max-width: 992px) {
@@ -16321,7 +16322,7 @@ a.forum-item-title:hover {
 
 /* line 1909, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/elements.scss */
 .vertical-date small {
-  color: #1ab394;
+  color: #428bca;
   font-weight: 400;
 }
 
@@ -17068,7 +17069,7 @@ img.circle-border {
   font-weight: 600;
   padding: 17px 20px;
   text-align: center;
-  background-color: #1ab394;
+  background-color: #428bca;
 }
 
 /* line 406, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/base.scss */
@@ -17290,7 +17291,7 @@ table.table-mail tr td {
 
 /* line 591, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/base.scss */
 .navy-bg {
-  background-color: #1ab394;
+  background-color: #428bca;
   color: white;
 }
 
@@ -17325,13 +17326,13 @@ table.table-mail tr td {
 
 /* line 620, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/base.scss */
 .panel-primary {
-  border-color: #1ab394;
+  border-color: #428bca;
 }
 
 /* line 624, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/base.scss */
 .panel-primary > .panel-heading {
-  background-color: #1ab394;
-  border-color: #1ab394;
+  background-color: #428bca;
+  border-color: #428bca;
 }
 
 /* line 629, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/base.scss */
@@ -17384,7 +17385,7 @@ table.table-mail tr td {
 
 /* line 669, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/base.scss */
 .progress-bar {
-  background-color: #1ab394;
+  background-color: #428bca;
 }
 
 /* line 673, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/base.scss */
@@ -17447,7 +17448,7 @@ table.table-mail tr td {
 /* COLORS */
 /* line 721, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/base.scss */
 .text-navy {
-  color: #1ab394;
+  color: #428bca;
 }
 
 /* line 725, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/base.scss */
@@ -18330,7 +18331,7 @@ ul.notes li div {
 
 /* line 355, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/pages.scss */
 .category-list li a .text-navy {
-  color: #1ab394;
+  color: #428bca;
 }
 
 /* line 359, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/pages.scss */
@@ -18669,13 +18670,13 @@ dd.project-people {
 .faq-question {
   font-size: 18px;
   font-weight: 600;
-  color: #1ab394;
+  color: #428bca;
   display: block;
 }
 
 /* line 650, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/pages.scss */
 .faq-question:hover {
-  color: #179d82;
+  color: #357ebd;
 }
 
 /* line 654, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/pages.scss */
@@ -18963,7 +18964,7 @@ dd.project-people {
 /* ISSUE TRACKER */
 /* line 896, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/pages.scss */
 .issue-tracker .btn-link {
-  color: #1ab394;
+  color: #428bca;
 }
 
 /* line 900, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/pages.scss */
@@ -19045,7 +19046,7 @@ table.issue-tracker tbody tr td {
 
 /* line 959, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/pages.scss */
 .agile-list li.success-element {
-  border-left: 3px solid #1ab394;
+  border-left: 3px solid #428bca;
 }
 
 /* line 962, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/pages.scss */
@@ -19203,7 +19204,7 @@ del {
 .sk-spinner-rotating-plane.sk-spinner {
   width: 30px;
   height: 30px;
-  background-color: #1ab394;
+  background-color: #428bca;
   margin: 0 auto;
   -webkit-animation: sk-rotatePlane 1.2s infinite ease-in-out;
   animation: sk-rotatePlane 1.2s infinite ease-in-out;
@@ -19271,7 +19272,7 @@ del {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: #1ab394;
+  background-color: #428bca;
   opacity: 0.6;
   position: absolute;
   top: 0;
@@ -19337,7 +19338,7 @@ del {
 
 /* line 108, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/spinners.scss */
 .sk-spinner-wave div {
-  background-color: #1ab394;
+  background-color: #428bca;
   height: 100%;
   width: 6px;
   display: inline-block;
@@ -19416,7 +19417,7 @@ del {
 
 /* line 160, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/spinners.scss */
 .sk-spinner-wandering-cubes .sk-cube1, .sk-spinner-wandering-cubes .sk-cube2 {
-  background-color: #1ab394;
+  background-color: #428bca;
   width: 10px;
   height: 10px;
   position: absolute;
@@ -19509,7 +19510,7 @@ del {
   width: 40px;
   height: 40px;
   margin: 0 auto;
-  background-color: #1ab394;
+  background-color: #428bca;
   border-radius: 100%;
   -webkit-animation: sk-pulseScaleOut 1s infinite ease-in-out;
   animation: sk-pulseScaleOut 1s infinite ease-in-out;
@@ -19572,7 +19573,7 @@ del {
   display: inline-block;
   position: absolute;
   top: 0;
-  background-color: #1ab394;
+  background-color: #428bca;
   border-radius: 100%;
   -webkit-animation: sk-chasingDotsBounce 2s infinite ease-in-out;
   animation: sk-chasingDotsBounce 2s infinite ease-in-out;
@@ -19651,7 +19652,7 @@ del {
 .sk-spinner-three-bounce div {
   width: 18px;
   height: 18px;
-  background-color: #1ab394;
+  background-color: #428bca;
   border-radius: 100%;
   display: inline-block;
   -webkit-animation: sk-threeBounceDelay 1.4s infinite ease-in-out;
@@ -19744,7 +19745,7 @@ del {
   margin: 0 auto;
   width: 20%;
   height: 20%;
-  background-color: #1ab394;
+  background-color: #428bca;
   border-radius: 100%;
   -webkit-animation: sk-circleBounceDelay 1.2s infinite ease-in-out;
   animation: sk-circleBounceDelay 1.2s infinite ease-in-out;
@@ -19961,7 +19962,7 @@ del {
 .sk-spinner-cube-grid .sk-cube {
   width: 33%;
   height: 33%;
-  background-color: #1ab394;
+  background-color: #428bca;
   float: left;
   -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
   animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
@@ -20059,7 +20060,7 @@ del {
  */
 /* line 590, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/spinners.scss */
 .sk-spinner-wordpress.sk-spinner {
-  background-color: #1ab394;
+  background-color: #428bca;
   width: 30px;
   height: 30px;
   border-radius: 30px;
@@ -20152,7 +20153,7 @@ del {
   margin: 0 auto;
   width: 18%;
   height: 18%;
-  background-color: #1ab394;
+  background-color: #428bca;
   border-radius: 100%;
   -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out;
   animation: sk-circleFadeDelay 1.2s infinite ease-in-out;
@@ -20636,7 +20637,7 @@ body.rtls .top-navigation .footer.fixed, body.rtls.top-navigation .footer.fixed 
 
 /* line 25, /home/quan/Dropbox/PROJECTS/animal-medical-services/app/assets/stylesheets/base/theme-config.scss */
 .spin-icon {
-  background: #1ab394;
+  background: #428bca;
   position: absolute;
   padding: 7px 10px 7px 13px;
   border-radius: 20px 0px 0px 20px;
@@ -22249,4 +22250,64 @@ html[dir="rtl"] .select2-container-multi .select2-search-choice-close {
 .control-group.success .select2-container .select2-choice div {
     border-left: 1px solid #468847 !important;
     background: #DFF0D8 !important;
+}
+/* iCheck plugin Square skin, green
+----------------------------------- */
+
+.icheckbox_square-green,
+.iradio_square-green {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 22px;
+    height: 22px;
+    background: url(green.png) no-repeat;
+    border: none;
+    cursor: pointer;
+}
+
+.icheckbox_square-green {
+    background-position: 0 0;
+}
+.icheckbox_square-green.hover {
+    background-position: -24px 0;
+}
+.icheckbox_square-green.checked {
+    background-position: -48px 0;
+}
+.icheckbox_square-green.disabled {
+    background-position: -72px 0;
+    cursor: default;
+}
+.icheckbox_square-green.checked.disabled {
+    background-position: -96px 0;
+}
+
+.iradio_square-green {
+    background-position: -120px 0;
+}
+.iradio_square-green.hover {
+    background-position: -144px 0;
+}
+.iradio_square-green.checked {
+    background-position: -168px 0;
+}
+.iradio_square-green.disabled {
+    background-position: -192px 0;
+    cursor: default;
+}
+.iradio_square-green.checked.disabled {
+    background-position: -216px 0;
+}
+
+/* HiDPI support */
+@media (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+    .icheckbox_square-green,
+    .iradio_square-green {
+        background-image: url(green@2x.png);
+        -webkit-background-size: 240px 24px;
+        background-size: 240px 24px;
+    }
 }
