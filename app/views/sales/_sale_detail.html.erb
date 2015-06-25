@@ -1,18 +1,17 @@
 
-<div class="form-group">
-  <label class="col-lg-2 control-label">Type</label>
-  <div class="col-lg-10"><%=ff.select :saleable_type, options_for_select([['Food', 'Food'], ['Medicine', 'Medicine']]),{include_blank: false}, class: 'form-control'%></div>
-</div>
-<div class="form-group">
-  <label class="col-lg-2 control-label">Product</label>
-  <div class="col-lg-10"><%=ff.select :saleable_id, options_for_select(foods_select),{include_blank: false}, class: 'form-control'%></div>
-</div>
-<div class="form-group">
-	<label class="col-lg-2 control-label">Quantity</label>
-	<div class="col-lg-10"><%=ff.number_field :quantity, class: 'form-control', :required => true%></div>
-</div>
-
-<div class="form-group">
-	<label class="col-lg-2 control-label">Price</label>
-	<div class="col-lg-10"><%=ff.number_field :price, class: 'form-control', :required => true%></div>
+<div class="col-md-12 well <%= type ? 'food-detail' : 'medicine-detail'%>">
+	<%=ff.hidden_field(:saleable_type, value: 'Food') if type%>
+	<%=ff.hidden_field(:saleable_type, value:'Medicine') unless type%>
+	<div class="col-md-1">
+		<label >Product</label>
+		<%=ff.select :saleable_id, options_for_select(products_select),{include_blank: false}, class: 'form-control'%>
+	</div>
+	<div class="col-md-4">
+		<label >Quantity</label>
+		<%=ff.number_field :quantity, class: 'form-control', :required => true%>
+	</div>
+	<div class="col-md-4">
+		<label >Price</label>
+		<%=ff.number_field :price, class: 'form-control', :required => true%>
+	</div>
 </div>

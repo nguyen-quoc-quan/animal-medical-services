@@ -95,20 +95,20 @@ var Sale = {
 	},
 
 	  create_medicine:function(){
-    $('#create-medicine').click(function(){
+    $('#create-sale').click(function(){
       $.ajax({
         type: "POST",
-        url: '/medicines',
+        url: '/sales',
         beforeSend: function(xhr) {
           xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
         },
-        data: $('#medicine-form').serialize(),
+        data: $('#sale-form').serialize(),
         dataType: 'json',
         success: function(data){
           // $('#newSku').fadeOut('slow');
           $('#newMedicine').modal('hide');
-          $('#medicine-form')[0].reset();
-          $('#new-medicine-message').html('');
+          $('#sale-form')[0].reset();
+          $('#new-sale-message').html('');
           success_msg = data.messages;
           success_html = '<div class="alert alert-success alert-dismissable">' +
           '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
@@ -117,7 +117,7 @@ var Sale = {
           '</ul>' +
           '</div>' ;
           $('#alert-message').html(success_html);
-          $('#medicines-list').DataTable().draw();
+          $('#sale-list').DataTable().draw();
         },
         error: function(data){
           error_html = '<div class="alert alert-danger alert-dismissable">' +
@@ -126,7 +126,7 @@ var Sale = {
           data.responseJSON.messages +
           '</ul>' +
           '</div>'
-          $('#new-medicine-message').html(error_html);}
+          $('#new-sale-message').html(error_html);}
     	});
     });
   },
@@ -223,7 +223,7 @@ var Sale = {
   	$('.add_fields').click(function(e){
   		time = new Date().getTime();
   		regexp = new RegExp($(this).data('id'), 'g');
-  		$(this).before($(this).data('fields').replace(regexp, time));
+  		$(this).closest('form .modal-footer').before(($(this).data('fields').replace(regexp, time)));
   		e.preventDefault();
   	});
   }

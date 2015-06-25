@@ -43,6 +43,7 @@ class SalesController < ApplicationController
   def new
     @sale = Sale.new
     @foods_select = Food.all.collect{|t| [t.name, t.id]}
+    @medicines_select = Medicine.all.collect{|t| [t.name, t.id]}
     @customers_select = Customer.all.collect{|t| [t.full_name, t.id]}
     respond_with(@sale)
   end
