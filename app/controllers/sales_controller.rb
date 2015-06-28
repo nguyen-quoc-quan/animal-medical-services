@@ -5,9 +5,15 @@ class SalesController < ApplicationController
 
   def index
     if request.xhr?
-      page = params[:page].to_i || 0
-      per_page = params[:per_page].to_i || 10
-      sales = Sale.all
+      search_text = params["search_text"] || ""
+      p "================"
+      p params
+      p search_text
+      # page = params[:page].to_i || 0
+      # per_page = params[:per_page].to_i || 1
+      sales = Sale.joins(:customer).where("customers.last_name LIKE ? OR customers.first_name LIKE ?", "%#{search_text}%","%#{search_text}%");
+      sales_count = sales.count
+      sales = sales.order('sale_at DESC').limit(params[:length]).offset(params[:start])
       data = []
       sales.each do |s|
         c = s.customer
@@ -23,8 +29,7 @@ class SalesController < ApplicationController
           owed: amount - pay
         }
       end
-      total_medicines =  sales.count
-      render json: {"aaData" =>  data,"iTotalRecords"=>total_medicines,"iTotalDisplayRecords"=>total_medicines}, status: 200
+      render json: {"aaData" =>  data,"iTotalRecords"=>sales_count,"iTotalDisplayRecords"=>sales_count}, status: 200
     else
       # @medicine = Medicine.new
       # @categories_select = MedicineCategory.all.collect{|c| [c.name, c.id]}
@@ -37,7 +42,11 @@ class SalesController < ApplicationController
   end
 
   def show
-    respond_with(@sale)
+    products = []
+    @sale.sale_details.each do |detail|
+      products << [detail, detail.saleable]
+    end
+    render json: {:attach=>render_to_string('_view_sale', :layout => false, locals:{products: products, sale: @sale})}, status: 200
   end
 
   def new

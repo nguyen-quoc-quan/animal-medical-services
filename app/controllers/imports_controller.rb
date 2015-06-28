@@ -14,6 +14,8 @@ class ImportsController < ApplicationController
 
   def new
     @import = Import.new
+    @foods_select = Food.all.collect{|t| [t.name, t.id]}
+    @medicines_select = Medicine.all.collect{|t| [t.name, t.id]}
     respond_with(@import)
   end
 
@@ -42,6 +44,9 @@ class ImportsController < ApplicationController
     end
 
     def import_params
-      params.require(:import).permit(:import_at, :pay, :owe)
+      params.require(:import).permit(:import_at, :pay, :owe,
+                                    import_details_attributes:[
+                                      :id, :quantity, :price, :import_id, :importable_id, :importable_type
+                                    ])
     end
 end

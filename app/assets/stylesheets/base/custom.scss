@@ -31,15 +31,7 @@ body.loading .custom-modal {
     display: block;
 }
 
-.brand-list{
-  color:white;
-  font-weight:600;
-  padding:14px 20px 14px 25px;
-  position:relative;
-  display:block
-}
-
-.brand-list:hover{
-  color:white;
-  font-weight:700;
+.view-sale, .view-import, .edit-sale, .edit-import{
+  cursor: pointer;
+  margin-left: 10px;
 }

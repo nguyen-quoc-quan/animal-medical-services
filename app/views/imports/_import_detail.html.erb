@@ -1,0 +1,17 @@
+
+<div class="col-md-12 well <%= type ? 'food-detail' : 'medicine-detail'%>">
+	<%=ff.hidden_field(:importable_type, value: 'Food') if type%>
+	<%=ff.hidden_field(:importable_type, value:'Medicine') unless type%>
+	<div class="col-md-1">
+		<label >Product</label>
+		<%=ff.select :importable_id, options_for_select(products_select),{include_blank: false}, class: 'form-control'%>
+	</div>
+	<div class="col-md-4">
+		<label >Quantity</label>
+		<%=ff.number_field :quantity, class: 'form-control', :required => true%>
+	</div>
+	<div class="col-md-4">
+		<label >Price</label>
+		<%=ff.number_field :price, class: 'form-control', :required => true%>
+	</div>
+</div>
