@@ -6,11 +6,6 @@ class SalesController < ApplicationController
   def index
     if request.xhr?
       search_text = params["search_text"] || ""
-      p "================"
-      p params
-      p search_text
-      # page = params[:page].to_i || 0
-      # per_page = params[:per_page].to_i || 1
       sales = Sale.joins(:customer).where("customers.last_name LIKE ? OR customers.first_name LIKE ?", "%#{search_text}%","%#{search_text}%");
       sales_count = sales.count
       sales = sales.order('sale_at DESC').limit(params[:length]).offset(params[:start])
@@ -21,7 +16,7 @@ class SalesController < ApplicationController
         pay = s.pay
         data << {
           id: s.id,
-          date: s.sale_at,
+          date: s.sale_at.strftime('%d-%m-%Y'),
           customer_name:c.full_name,
           customer_id: c.id,
           amount: amount,
@@ -61,14 +56,33 @@ class SalesController < ApplicationController
   end
 
   def create
-    @sale = Sale.new(sale_params)
-    @sale.save
-    respond_with(@sale)
+    sale = Sale.new(sale_params)
+    sale.save
+    if sale.errors.messages.blank?
+      success_message = "<li>Created successfully!</li>"
+      render json: {messages: success_message}, status: 200
+    else
+      error_messages = sale.errors.full_messages.map{|err| "<li>#{err}</li>"}
+      render json: {messages: error_messages.join("")}, status: 422
+    end
   end
 
   def update
-    @sale.update(sale_params)
-    respond_with(@sale)
+    begin
+      @sale.update(sale_params)
+      if @sale.errors.messages.blank?
+        success_message = "<li>Updated successfully!</li>"
+        render json: {messages: success_message, pay: @sale.pay, owe: @sale.amount - @sale.pay}, status: 200
+      else
+        error_messages = @sale.errors.full_messages.map{|err| "<li>#{err}</li>"}
+        render json: {messages: error_messages.join("")}, status: 422
+      end
+    rescue Exception => e
+      p "==============="
+      p e
+      render json: {messages: "<li>So qua lon</li>"}, status: 500
+    end
+
   end
 
   def destroy

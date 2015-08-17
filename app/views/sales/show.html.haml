@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %strong Sale at:
+  = @sale.sale_at
+%p
+  %strong Pay:
+  = @sale.pay
+%p
+  %strong Owe:
+  = @sale.owe
+%p
+  %strong Customer:
+  = @sale.customer_id
+= link_to 'Edit', edit_sale_path(@sale)
+|
+= link_to 'Back', sales_path

@@ -1,0 +1,26 @@
+#newMedicine.modal.inmodal{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content.animated.bounceInRight
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+          %span.sr-only Close
+        %h4.modal-title New Medicine
+      .modal-body
+        #new-medicine-message
+        = form_for @medicine, url: medicines_path ,html: {class: 'm-t form-horizontal', id: 'medicine-form', method: 'post'} do |f|
+          .form-group
+            %label.col-lg-2.control-label Name
+            .col-lg-10= f.text_field :name, class: 'form-control', :required => true
+          .form-group
+            %label.col-lg-2.control-label Category
+            .col-lg-10= f.select :medicine_category_id, options_for_select(@categories_select),{include_blank: false}, class: 'form-control'
+          .form-group
+            %label.col-lg-2.control-label Specification
+            .col-lg-10= f.select :medicine_specification_id, options_for_select(@specifications_select), {include_blank: false},class: 'form-control', :required => true
+          .form-group
+            %label.col-lg-2.control-label Description
+            .col-lg-10= f.text_field :description, class: 'form-control', id: 'new-sku-eta'
+          .modal-footer
+            %button.btn.btn-white{"data-dismiss" => "modal", :type => "button"} Cancel
+            %button#create-medicine.btn.btn-primary{:type => "button"} Create

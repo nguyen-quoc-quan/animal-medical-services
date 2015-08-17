@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong Quantity:
+  = @import_detail.quantity
+%p
+  %strong Price:
+  = @import_detail.price
+%p
+  %strong Importable:
+  = @import_detail.importable_id
+%p
+  %strong Importable type:
+  = @import_detail.importable_type
+%p
+  %strong Import:
+  = @import_detail.import_id
+= link_to 'Edit', edit_import_detail_path(@import_detail)
+|
+= link_to 'Back', import_details_path

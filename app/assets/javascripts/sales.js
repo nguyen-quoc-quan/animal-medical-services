@@ -53,13 +53,13 @@ var Sale = {
           {
             "sTitle": 'Pay',
             "bSortable": false,
-            "sClass": "left",
+            "sClass": "left pay",
             "mData": "pay",
           },
           {
             "sTitle": 'Owe',
             "bSortable": false,
-            "sClass": "left",
+            "sClass": "left owe",
             "mData": "owed",
           },
           {
@@ -72,18 +72,7 @@ var Sale = {
 
         ],
         fnServerData: function( sUrl, aoData, fnCallback ) {
-          // tmp = aoData;
-          // aoData = CommonFunction.parseSkuFilterParams(aoData);
-          // draw = tmp[5];
-          // aoData.push({"name":"search", "value": draw.value.value});
-          // if(brand_name != ""){
-          //   aoData.push({"name": "filter[brand_name]", "value": brand_name});
-          // }
-          // filter_export = aoData;
-          // // Search
-                    console.log(aoData);
           aoData = self.parse_data(aoData);
-
           $.ajax({
             type: "GET",
             url: url,
@@ -119,12 +108,13 @@ var Sale = {
 
 	render_action: function(data, type, full, meta){
 		view_btn = "<i class='fa fa-eye view-sale' data-id = '"+data+"'></i>";
-		edit_btn = "<i class='fa fa-pencil-square-o edit-sale'></i>"
-		return "<div data-id = '"+data+"'>"+view_btn + edit_btn+"</div>";
+		delete_btn = "<i class='fa fa-times delete-sale' data-id = '"+data+"'></i>"
+		return "<div data-id = '"+data+"'>"+view_btn + delete_btn+"</div>";
 	},
 
 	do_action: function(){
 		$(".view-sale").click(function(){
+			row = $(this).closest("tr");
 			id = $(this).data('id');
 			$.ajax({
 				type: "get",
@@ -134,17 +124,55 @@ var Sale = {
 					console.log('OK');
 					$('#custom-modal').html(data.attach).show();
 					$('#view-sale-detail').modal('show');
+					$("#pay-sale").click(function(){
+						var url = $("#pay-form").attr('action');
+						console.log(url);
+						$.ajax({
+			        type: "PUT",
+			        url: url,
+			        beforeSend: function(xhr) {
+			          xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+			        },
+			        data: $('#pay-form').serialize(),
+			        dataType: 'json',
+			        success: function(data){
+			          success_msg = data.messages;
+			          success_html = '<div class="alert alert-success alert-dismissable">' +
+			          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+			          '<ul>'+
+			          success_msg +
+			          '</ul>' +
+			          '</div>' ;
+			          $('#alert-message').html(success_html);
+			         	row.find(".owe").text(data.owe);
+			         	row.find(".pay").text(data.pay);
+			        },
+			        error: function(data){
+			          error_html = '<div class="alert alert-danger alert-dismissable">' +
+			          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+			          '<ul>'+
+			          data.responseJSON.messages +
+			          '</ul>' +
+			          '</div>'
+			          $('#alert-message').html(error_html);
+			        },
+			        complete: function(data){
+			        	$('#view-sale-detail').modal('hide');
+			          $('#new-sale-message').html('');
+			        }
+			    	});
+					});
 					$('#view-sale-detail').on('hidden.bs.modal', function (e) {
-						  $('#custom-modal').html("").hide();
-						})
+					  $('#custom-modal').html("").hide();
+					})
 				},
 				error: function(data){
 					console.log('ERROR');
 				}
 			});
 		});
-		$(".edit-sale").click(function(){
-			console.log('edit');
+		$(".delete-sale").click(function(){
+			console.log('delete');
 		});
 	},
 
@@ -162,7 +190,7 @@ var Sale = {
           // $('#newSku').fadeOut('slow');
           $('#newMedicine').modal('hide');
           $('#sale-form')[0].reset();
-          $('#new-sale-message').html('');
+          $('#alert-message').html('');
           success_msg = data.messages;
           success_html = '<div class="alert alert-success alert-dismissable">' +
           '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
@@ -179,8 +207,9 @@ var Sale = {
           '<ul>'+
           data.responseJSON.messages +
           '</ul>' +
-          '</div>'
-          $('#new-sale-message').html(error_html);}
+          '</div>';
+          $('#alert-message').html('');
+          $('#alert-message').html(error_html);}
     	});
     });
   },

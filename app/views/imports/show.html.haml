@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong Import at:
+  = @import.import_at
+%p
+  %strong Pay:
+  = @import.pay
+%p
+  %strong Owe:
+  = @import.owe
+= link_to 'Edit', edit_import_path(@import)
+|
+= link_to 'Back', imports_path

@@ -1,0 +1,31 @@
+= form_for(@import_detail) do |f|
+  - if @import_detail.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@import_detail.errors.count, "error")
+        prohibited this import_detail from being saved:
+      %ul
+        - @import_detail.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :quantity
+    %br/
+    = f.number_field :quantity
+  .field
+    = f.label :price
+    %br/
+    = f.text_field :price
+  .field
+    = f.label :importable_id
+    %br/
+    = f.number_field :importable_id
+  .field
+    = f.label :importable_type
+    %br/
+    = f.text_field :importable_type
+  .field
+    = f.label :import_id
+    %br/
+    = f.number_field :import_id
+  .actions
+    = f.submit

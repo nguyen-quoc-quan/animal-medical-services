@@ -14,6 +14,7 @@ var Import = {
 	},
 	load_list: function(){
 		var url = $('#imports-list').data('target');
+    var self = this;
 		var table = $('#imports-list')
       .dataTable({
         "responsive": true,
@@ -38,12 +39,6 @@ var Import = {
             "mData": "date",
           },
           {
-            "sTitle": 'Customer',
-            "bSortable": false,
-            "sClass": "left",
-            "mData": "customer_name",
-          },
-          {
             "sTitle": 'Amount',
             "bSortable": false,
             "sClass": "left",
@@ -52,27 +47,26 @@ var Import = {
           {
             "sTitle": 'Pay',
             "bSortable": false,
-            "sClass": "left",
+            "sClass": "left pay",
             "mData": "pay",
           },
           {
             "sTitle": 'Owe',
             "bSortable": false,
-            "sClass": "left",
+            "sClass": "left owe",
             "mData": "owed",
+          },
+           {
+            "sTitle": 'Action',
+            "bSortable": false,
+            "sClass": "left",
+            "mData": "id",
+            "mRender": self.render_action
           }
 
         ],
         fnServerData: function( sUrl, aoData, fnCallback ) {
-          // tmp = aoData;
-          // aoData = CommonFunction.parseSkuFilterParams(aoData);
-          // draw = tmp[5];
-          // aoData.push({"name":"search", "value": draw.value.value});
-          // if(brand_name != ""){
-          //   aoData.push({"name": "filter[brand_name]", "value": brand_name});
-          // }
-          // filter_export = aoData;
-          // // Search
+          aoData = self.parse_data(aoData);
           $.ajax({
             type: "GET",
             url: url,
@@ -82,14 +76,99 @@ var Import = {
           })
         },
         fnDrawCallback: function(setting){
-          // if(user_type == 'BrandUser'){
-          //   self.select_skus();
-          //   self.edit_eta();
-          //   self.edit_quantity();
-          // }
+          self.do_action();
         }
     });
 	},
+
+  parse_data: function(aoData){
+    var result = [];
+    var tmp = aoData[2].value[0];
+    if (tmp.column == 0) {
+      result.push({"name": 'sort[date]', 'value': tmp.dir});
+    }else if (tmp.column == 1) {
+      result.push({"name": 'sort[customer_name]', 'value': tmp.dir});
+    }else if (tmp.column == 2) {
+      result.push({"name": 'sort[amount]', 'value': tmp.dir});
+    }
+    tmp = aoData[5].value
+    result.push({"name": 'search_text', 'value': tmp.value});
+    tmp = aoData[3]
+    result.push({"name": 'start', 'value': tmp.value});
+    tmp = aoData[4]
+    result.push({"name": 'length', 'value': tmp.value});
+    return result;
+  },
+
+  render_action: function(data, type, full, meta){
+    view_btn = "<i class='fa fa-eye view-import' data-id = '"+data+"'></i>";
+    delete_btn = "<i class='fa fa-times delete-import' data-id = '"+data+"'></i>"
+    return "<div data-id = '"+data+"'>"+view_btn + delete_btn+"</div>";
+  },
+
+  do_action: function(){
+    $(".view-import").click(function(){
+      row = $(this).closest("tr");
+      id = $(this).data('id');
+      $.ajax({
+        type: "get",
+        dataType: 'json',
+        url: "/imports/"+ id,
+        success: function(data){
+          console.log('OK');
+          $('#custom-modal').html(data.attach).show();
+          $('#view-import-detail').modal('show');
+          $("#pay-import").click(function(){
+            var url = $("#pay-form").attr('action');
+            console.log(url);
+            $.ajax({
+              type: "PUT",
+              url: url,
+              beforeSend: function(xhr) {
+                xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+              },
+              data: $('#pay-form').serialize(),
+              dataType: 'json',
+              success: function(data){
+                success_msg = data.messages;
+                success_html = '<div class="alert alert-success alert-dismissable">' +
+                '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+                '<ul>'+
+                success_msg +
+                '</ul>' +
+                '</div>' ;
+                $('#alert-message').html(success_html);
+                row.find(".owe").text(data.owe);
+                row.find(".pay").text(data.pay);
+              },
+              error: function(data){
+                error_html = '<div class="alert alert-danger alert-dismissable">' +
+                '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+                '<ul>'+
+                data.responseJSON.messages +
+                '</ul>' +
+                '</div>'
+                $('#alert-message').html(error_html);
+              },
+              complete: function(data){
+                $('#view-import-detail').modal('hide');
+                $('#new-import-message').html('');
+              }
+            });
+          });
+          $('#view-import-detail').on('hidden.bs.modal', function (e) {
+            $('#custom-modal').html("").hide();
+          })
+        },
+        error: function(data){
+          console.log('ERROR');
+        }
+      });
+    });
+    $(".delete-import").click(function(){
+      console.log('delete');
+    });
+  },
 
 	create_import:function(){
     $('#create-import').click(function(){
@@ -105,7 +184,7 @@ var Import = {
           // $('#newSku').fadeOut('slow');
           $('#newMedicine').modal('hide');
           $('#import-form')[0].reset();
-          $('#new-import-message').html('');
+          $('#alert-message').html('');
           success_msg = data.messages;
           success_html = '<div class="alert alert-success alert-dismissable">' +
           '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
@@ -123,7 +202,9 @@ var Import = {
           data.responseJSON.messages +
           '</ul>' +
           '</div>'
-          $('#new-import-message').html(error_html);}
+          $('#alert-message').html('');
+          $('#alert-message').html(error_html);
+        }
     	});
     });
   },

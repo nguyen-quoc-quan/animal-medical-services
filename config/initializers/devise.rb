@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '73199df330b4438c5e3f269e9c8b6d08d556acd7bf36d026d9ece0ff9d65d109ff1b0b22438a328ff1d5ed11c664b188c0fa9cc0268ecd252206bfe4f799221f'
+  # config.secret_key = '1caae5205edec314882ba4bbb955c134cc464d6ddf764a868ac2f15d478f3b801e4439c40548a060e26ae68682b08e31ad9adf18028a9339eb51042ebf28392d'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -99,7 +99,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = 'f1103c31f22c087d7c8f93e26cf6ffbfa713782cc532aabe32e038a9ec0da6574c2f54b861c7ff4ee5436f5990b210e003c86c0a59b155ba70877d93291d74ae'
+  # config.pepper = '708c0ad1f9387581897c21a78be7cfd333321cb598a2f14b97cf35b566699c39b0106620c47ca75031d264c9b627dbbdbe8fb681e1d924918f073c3ae705b46f'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -195,7 +195,7 @@ Devise.setup do |config|
 
   # When set to false, does not sign a user in automatically after their password is
   # reset. Defaults to true, so a user is signed in automatically after a reset.
-  # config.sign_in_after_reset_password = true
+  config.sign_in_after_reset_password = true
 
   # ==> Configuration for :encryptable
   # Allow you to use another encryption algorithm besides bcrypt (default). You can use

@@ -1,0 +1,23 @@
+= form_for(@animal_group) do |f|
+  - if @animal_group.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@animal_group.errors.count, "error")
+        prohibited this animal_group from being saved:
+      %ul
+        - @animal_group.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :quantity
+    %br/
+    = f.number_field :quantity
+  .field
+    = f.label :started_at
+    %br/
+    = f.date_select :started_at
+  .field
+    = f.label :customer_id
+    %br/
+    = f.number_field :customer_id
+  .actions
+    = f.submit

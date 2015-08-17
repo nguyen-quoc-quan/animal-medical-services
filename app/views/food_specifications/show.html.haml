@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Capacity:
+  = @food_specification.capacity
+%p
+  %strong Food specification types:
+  = @food_specification.food_specification_types_id
+= link_to 'Edit', edit_food_specification_path(@food_specification)
+|
+= link_to 'Back', food_specifications_path

@@ -11,32 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610020758) do
+ActiveRecord::Schema.define(version: 20150727130851) do
 
   create_table "animal_groups", force: true do |t|
-    t.integer  "customer_id"
     t.integer  "quantity",    default: 0
-    t.date     "begin_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "bill_details", force: true do |t|
-    t.integer  "bill_id"
-    t.integer  "product_id"
-    t.integer  "quantity",                              default: 0
-    t.decimal  "sale_price",    precision: 9, scale: 2, default: 0.0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "billable_id"
-    t.string   "billable_type"
-  end
-
-  create_table "bills", force: true do |t|
+    t.date     "started_at"
     t.integer  "customer_id"
-    t.date     "sale_date"
-    t.decimal  "pay",         precision: 9, scale: 2, default: 0.0
-    t.decimal  "owe",         precision: 9, scale: 2, default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -56,34 +36,43 @@ ActiveRecord::Schema.define(version: 20150610020758) do
     t.datetime "updated_at"
   end
 
-  create_table "food_types", force: true do |t|
+  create_table "food_specification_types", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "food_specifications", force: true do |t|
+    t.float    "capacity",                   limit: 24, default: 0.0
+    t.integer  "food_specification_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "foods", force: true do |t|
     t.string   "name"
-    t.integer  "food_category_id"
-    t.integer  "food_type_id"
     t.text     "description"
+    t.integer  "quantity",              default: 0
+    t.integer  "food_specification_id"
+    t.integer  "food_category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "import_details", force: true do |t|
-    t.integer  "import_id"
-    t.integer  "product_id"
-    t.integer  "quantity",                                default: 0
-    t.decimal  "import_price",    precision: 9, scale: 2, default: 0.0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "quantity",        default: 0
+    t.integer  "price",           default: 0
     t.integer  "importable_id"
     t.string   "importable_type"
+    t.integer  "import_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "imports", force: true do |t|
-    t.date     "import_date"
+    t.date     "import_at"
+    t.integer  "pay",        default: 0
+    t.integer  "owe",        default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -94,22 +83,57 @@ ActiveRecord::Schema.define(version: 20150610020758) do
     t.datetime "updated_at"
   end
 
-  create_table "medicine_types", force: true do |t|
+  create_table "medicine_specification_types", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "medicine_specifications", force: true do |t|
+    t.float    "capacity",                       limit: 24, default: 0.0
+    t.integer  "medicine_specification_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "medicines", force: true do |t|
     t.string   "name"
-    t.integer  "medicine_category_id"
-    t.integer  "medicine_type_id"
     t.text     "description"
+    t.integer  "quantity",                  default: 0
+    t.integer  "medicine_specification_id"
+    t.integer  "medicine_category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sale_details", force: true do |t|
+    t.integer  "quantity",      default: 0
+    t.integer  "price",         default: 0
+    t.integer  "saleable_id"
+    t.string   "saleable_type"
+    t.integer  "sale_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sales", force: true do |t|
+    t.date     "sale_at"
+    t.integer  "pay",         default: 0
+    t.integer  "owe",         default: 0
+    t.integer  "customer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "password_digest"
+    t.boolean  "status"
+    t.string   "avatar"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -120,8 +144,6 @@ ActiveRecord::Schema.define(version: 20150610020758) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

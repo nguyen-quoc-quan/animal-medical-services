@@ -51,6 +51,12 @@ var Medicine = {
             "bSortable": true,
             "sClass": "left",
             "mData": "type",
+          },
+          {
+            "sTitle": 'Quantity',
+            "bSortable": true,
+            "sClass": "left",
+            "mData": "quantity",
           }
 
         ],

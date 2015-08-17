@@ -1,0 +1,22 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    %h2 Danh Sach
+  .wrapper.wrapper-content.animated.fadeInRight
+    .row
+      .col-lg-12
+        %div
+          %button.btn.btn-primary{"data-target" => "#newMedicine", "data-toggle" => "modal", :style => "margin-bottom:15px", :type => "button"}
+            New medicine
+          %button.btn.btn-primary{"data-target" => "#newCategory", "data-toggle" => "modal", :style => "margin-bottom:15px", :type => "button"}
+            New category
+          %button.btn.btn-primary{"data-target" => "#newSpecification", "data-toggle" => "modal", :style => "margin-bottom:15px", :type => "button"}
+            New specification
+          %button#delete-skus-btn.btn.btn-primary{:style => "margin-bottom:15px", :type => "button"}
+            Delete
+        = render 'new_medicine'
+        = render 'new_category'
+        = render 'new_specification'
+        #alert-message
+        %table#medicines-list.table.table-striped.table-bordered.table-hover{"data-target" => medicines_path}
+  .custom-modal
+    / Place at bottom of page

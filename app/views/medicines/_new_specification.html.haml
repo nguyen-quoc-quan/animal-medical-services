@@ -1,0 +1,36 @@
+#newSpecification.modal.inmodal{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content.animated.bounceInRight
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+          %span.sr-only Close
+        %h4.modal-title New Medicine Specification
+      .modal-body
+        #new-medicine-message
+        .radio.i-checks
+          %label
+            %input#create-new-specification{:checked => "checked", :name => "specification", :type => "radio", :value => "0"}/
+            = succeed "Create" do
+              %i
+        .radio.i-checks
+          %label
+            %input#use-exist-specification{:name => "specification", :type => "radio", :value => "1"}/
+            = succeed "Use" do
+              %i
+        = form_for @specification, url: medicine_specifications_path ,html: {class: 'm-t form-horizontal', id: 'specification-form', method: 'post'} do |f|
+          = f.fields_for :medicine_specification_type do |ff|
+            .form-group
+              %label.col-lg-2.control-label Name
+              .col-lg-10
+                = ff.text_field :name, class: 'form-control', :required => true
+          .form-group
+            %label.col-lg-2.control-label Specification
+            .col-lg-10= f.select :medicine_specification_type_id, options_for_select(@specification_types_select),{include_blank: false}, class: 'form-control'
+          .form-group
+            %label.col-lg-2.control-label Capacity
+            .col-lg-10
+              = f.text_field :capacity, class: 'form-control', :required => true
+          .modal-footer
+            %button.btn.btn-white{"data-dismiss" => "modal", :type => "button"} Cancel
+            %button#create-medicine-specification.btn.btn-primary{:type => "button"} Create

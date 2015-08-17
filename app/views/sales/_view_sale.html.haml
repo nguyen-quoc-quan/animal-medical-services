@@ -1,0 +1,44 @@
+#view-sale-detail.modal.inmodal{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content.animated.bounceInRight
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+          %span.sr-only Close
+        %h2 Chi Tiet Hoa Don
+      .modal-body
+        = form_for sale, html: {class: 'form-inline', id: 'pay-form', method: 'put'} do |f|
+          .form-group
+            %label{:for => ""} Pay
+            = f.number_field :pay, class: 'form-control', :required => true
+          %button#pay-sale.btn.btn-primary{:type => "button"} Save
+        %table.table
+          %thead
+            %tr
+              %th #
+              %th Loai
+              %th Ten
+              %th So Luong
+              %th Gia
+              %th Tong
+          %tbody
+            - products.each_with_index do |product, index|
+              %tr
+                %td= index+1
+                %td= product[1].class
+                %td= product[1].name
+                %td= product[0].quantity
+                %td= product[0].price
+                %td= product[0].price * product[0].quantity
+            %tr
+              %td{:colspan => "4"}
+              %td
+                %b Tong:
+              %td= sale.amount
+            %tr
+              %td{:colspan => "4"}
+              %td
+                %b No:
+              %td= sale.amount - sale.pay
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

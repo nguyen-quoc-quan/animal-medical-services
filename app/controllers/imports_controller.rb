@@ -4,12 +4,35 @@ class ImportsController < ApplicationController
   respond_to :html
 
   def index
-    @imports = Import.all
-    respond_with(@imports)
+    if request.xhr?
+      search_text = params["search_text"] || ""
+      imports = Import.all
+      imports_count = imports.count
+      imports = imports.order('import_at DESC').limit(params[:length]).offset(params[:start])
+      data = []
+      imports.each do |s|
+        amount = s.amount
+        pay = s.pay
+        data << {
+          id: s.id,
+          date: s.import_at.strftime('%d-%m-%Y'),
+          amount: amount,
+          pay: pay,
+          owed: amount - pay
+        }
+      end
+      render json: {"aaData" =>  data,"iTotalRecords"=>imports_count,"iTotalDisplayRecords"=>imports_count}, status: 200
+    else
+
+    end
   end
 
   def show
-    respond_with(@import)
+    products = []
+    @import.import_details.each do |detail|
+      products << [detail, detail.importable]
+    end
+    render json: {:attach=>render_to_string('_view_import', :layout => false, locals:{products: products, import: @import})}, status: 200
   end
 
   def new
@@ -23,14 +46,32 @@ class ImportsController < ApplicationController
   end
 
   def create
-    @import = Import.new(import_params)
-    @import.save
-    respond_with(@import)
+    import = Import.new(import_params)
+    import.save
+    if import.errors.messages.blank?
+      success_message = "<li>Created successfully!</li>"
+      render json: {messages: success_message}, status: 200
+    else
+      error_messages = import.errors.full_messages.map{|err| "<li>#{err}</li>"}
+      render json: {messages: error_messages.join("")}, status: 422
+    end
   end
 
   def update
-    @import.update(import_params)
-    respond_with(@import)
+    begin
+      @import.update(import_params)
+      if @import.errors.messages.blank?
+        success_message = "<li>Updated successfully!</li>"
+        render json: {messages: success_message, pay: @import.pay, owe: @import.amount - @import.pay}, status: 200
+      else
+        error_messages = @import.errors.full_messages.map{|err| "<li>#{err}</li>"}
+        render json: {messages: error_messages.join("")}, status: 422
+      end
+    rescue Exception => e
+      p "==============="
+      p e
+      render json: {messages: "<li>So qua lon</li>"}, status: 500
+    end
   end
 
   def destroy

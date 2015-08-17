@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong Quantity:
+  = @sale_detail.quantity
+%p
+  %strong Price:
+  = @sale_detail.price
+%p
+  %strong Saleable:
+  = @sale_detail.saleable_id
+%p
+  %strong Saleable type:
+  = @sale_detail.saleable_type
+%p
+  %strong Bill:
+  = @sale_detail.bill_id
+= link_to 'Edit', edit_sale_detail_path(@sale_detail)
+|
+= link_to 'Back', sale_details_path

@@ -1,0 +1,12 @@
+%div{:class => "col-md-12 well #{type ? 'food-detail' : 'medicine-detail'}"}
+  = ff.hidden_field(:saleable_type, value: 'Food') if type
+  = ff.hidden_field(:saleable_type, value:'Medicine') unless type
+  .col-md-1
+    %label Product
+    = ff.select :saleable_id, options_for_select(products_select),{include_blank: false}, class: 'form-control'
+  .col-md-4
+    %label Quantity
+    = ff.number_field :quantity, class: 'form-control', :required => true
+  .col-md-4
+    %label Price
+    = ff.number_field :price, class: 'form-control', :required => true

@@ -12,7 +12,7 @@ gem "twitter-bootstrap-rails", '~> 3.2.0'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 gem 'mysql2'
-gem 'pg'
+# gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -36,7 +36,7 @@ gem 'spring',        group: :development
 gem 'thin'
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -47,3 +47,6 @@ gem 'thin'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem "erb2haml", :group => :development
+gem 'haml'
+gem "cancan"

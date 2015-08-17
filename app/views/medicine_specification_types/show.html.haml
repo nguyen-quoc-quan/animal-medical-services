@@ -1,0 +1,7 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @medicine_specification_type.name
+= link_to 'Edit', edit_medicine_specification_type_path(@medicine_specification_type)
+|
+= link_to 'Back', medicine_specification_types_path

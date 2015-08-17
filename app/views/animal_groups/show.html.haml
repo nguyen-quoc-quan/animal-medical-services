@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong Quantity:
+  = @animal_group.quantity
+%p
+  %strong Started at:
+  = @animal_group.started_at
+%p
+  %strong Customer:
+  = @animal_group.customer_id
+= link_to 'Edit', edit_animal_group_path(@animal_group)
+|
+= link_to 'Back', animal_groups_path
