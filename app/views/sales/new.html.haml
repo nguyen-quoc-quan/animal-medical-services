@@ -1,17 +1,25 @@
-#alert-message
-= form_for @sale, html: {class: 'form-inline', id: 'sale-form', method: 'post'} do |f|
-  .col-md-12.well
-    .form-group
-      %label Date
-      = f.text_field :sale_at, class: 'form-control', :required => true
-    .form-group
-      %label Customer
-      = f.select :customer_id, options_for_select(@customers_select),{include_blank: false}, class: 'form-control'
-    .form-group
-      %label Pay
-      = f.number_field :pay, class: 'form-control', :required => true
-  .modal-footer
-    = link_to_add_fields "Add Food", f, :sale_details, true
-    = link_to_add_fields "Add Medicine", f, :sale_details, false
-    %button.btn.btn-white{"data-dismiss" => "modal", :type => "button"} Cancel
-    %button#create-sale.btn.btn-primary{:type => "button"} Create
+.content
+  .page-title
+    %i.icon-custom-left
+    %h3 Hóa Đơn Xuất
+  .row-fluid
+    .span12
+      .grid.simple
+        .grid-body
+          #alert-message
+          = form_for @sale, html: {class: 'form-inline', id: 'sale-form', method: 'post'} do |f|
+            .col-md-12.well
+              .form-group
+                %label Date
+                = f.text_field :sale_at, class: 'form-control', :required => true
+              .form-group
+                %label Customer
+                = f.select :customer_id, options_for_select(@customers_select),{include_blank: false}, class: 'form-control'
+              .form-group
+                %label Pay
+                = f.number_field :pay, class: 'form-control', :required => true
+            .modal-footer
+              = link_to_add_fields "Add Food", f, :sale_details, true
+              = link_to_add_fields "Add Medicine", f, :sale_details, false
+              %button.btn.btn-white{"data-dismiss" => "modal", :type => "button"} Cancel
+              %button#create-sale.btn.btn-primary{:type => "button"} Create

@@ -1,11 +1,11 @@
-.row.wrapper.border-bottom.white-bg.page-heading
-  .col-lg-10
-    %h2 Danh Sach
-  .wrapper.wrapper-content.animated.fadeInRight
-    .row
-      .col-lg-12
-        %div
-        #alert-message
-        %table#imports-list.table.table-striped.table-bordered.table-hover{"data-target" => imports_path}
+.content
+  .page-title
+    %i.icon-custom-left
+    %h3 Danh Sách Thuốc
+  .row-fluid
+    .span12
+      .grid.simple
+        .grid-body
+          %table#imports-list.table.table-hover.table-condensed{"data-target" => imports_path}
   #custom-modal
     / Place at bottom of page

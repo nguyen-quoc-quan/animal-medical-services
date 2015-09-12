@@ -3,6 +3,10 @@ class MedicinesController < ApplicationController
 
   respond_to :html
 
+  def home
+    
+  end
+
   def index
     if request.xhr?
       page = params[:page].to_i || 0
@@ -23,7 +27,7 @@ class MedicinesController < ApplicationController
     else
       @medicine = Medicine.new
       @categories_select = MedicineCategory.all.collect{|c| [c.name, c.id]}
-      @specifications_select = MedicineSpecification.all.collect{|t| [t.medicine_specification_type.name, t.id]}
+      @specifications_select = MedicineSpecification.all.collect{|t| ["#{t.medicine_specification_type.name} (#{t.capacity})", t.id]}
       @specification_types_select = MedicineSpecificationType.all.collect{|t| [t.name, t.id]}
       @specification = MedicineSpecification.new
       @specification.medicine_specification_type = MedicineSpecificationType.new

@@ -1,4 +1,4 @@
-#view-sale-detail.modal.inmodal{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+#view-sale-detail.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
   .modal-dialog
     .modal-content.animated.bounceInRight
       .modal-header
@@ -9,9 +9,10 @@
       .modal-body
         = form_for sale, html: {class: 'form-inline', id: 'pay-form', method: 'put'} do |f|
           .form-group
-            %label{:for => ""} Pay
+            %label{:for => :sale_pay} Đã trả
             = f.number_field :pay, class: 'form-control', :required => true
-          %button#pay-sale.btn.btn-primary{:type => "button"} Save
+          .form-group
+            %button#pay-sale.btn.btn-primary{:type => "button"} Save
         %table.table
           %thead
             %tr

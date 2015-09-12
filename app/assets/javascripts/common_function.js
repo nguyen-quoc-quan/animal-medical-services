@@ -1,5 +1,3 @@
-//= require dataTables/jquery.dataTables.js
-
 var CommonFunction = {
   format_date: function(obj){
     if(obj !="" && obj != null){

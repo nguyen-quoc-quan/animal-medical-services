@@ -1,26 +1,26 @@
-#newFood.modal.inmodal{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+#newFood.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
   .modal-dialog
     .modal-content.animated.bounceInRight
       .modal-header
         %button.close{"data-dismiss" => "modal", :type => "button"}
           %span{"aria-hidden" => "true"} ×
           %span.sr-only Close
-        %h4.modal-title New Food
+        %h4.modal-title Thức ăn Mới
       .modal-body
         #new-food-message
         = form_for @food, url: foods_path ,html: {class: 'm-t form-horizontal', id: 'food-form', method: 'post'} do |f|
           .form-group
-            %label.col-lg-2.control-label Name
+            %label.col-lg-2.control-label Tên
             .col-lg-10= f.text_field :name, class: 'form-control', :required => true
           .form-group
-            %label.col-lg-2.control-label Category
-            .col-lg-10= f.select :food_category_id, options_for_select(@categories_select),{include_blank: false}, class: 'form-control'
+            %label.col-lg-2.control-label Danh Mục
+            .col-lg-10= f.select :food_category_id, options_for_select(@categories_select),{include_blank: "Select"}, class: 'form-control'
           .form-group
-            %label.col-lg-2.control-label Specification
-            .col-lg-10= f.select :food_specification_id, options_for_select(@specifications_select), {include_blank: false},class: 'form-control', :required => true
+            %label.col-lg-2.control-label Qui Cách
+            .col-lg-10= f.select :food_specification_id, options_for_select(@specifications_select, 'select'), {include_blank: "Select"},class: 'form-control', :required => true
           .form-group
-            %label.col-lg-2.control-label Description
+            %label.col-lg-2.control-label Mô tả
             .col-lg-10= f.text_field :description, class: 'form-control', id: 'new-sku-eta'
-          .modal-footer
-            %button.btn.btn-white{"data-dismiss" => "modal", :type => "button"} Cancel
-            %button#create-food.btn.btn-primary{:type => "button"} Create
+      .modal-footer
+        %button.btn.btn-white{"data-dismiss" => "modal", :type => "button"} Hủy
+        %button#create-food.btn.btn-primary{:type => "button"} Tạo

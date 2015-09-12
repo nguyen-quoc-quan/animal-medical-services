@@ -10,9 +10,19 @@
  *
  *= require_self
  *= require font-awesome
- *= require animate/animate.css
+ *= require animate.min
+ 
+ *= require bootstrap-select2/select2
+ *= require jquery-datatable/jquery.dataTables
+ *= require datatables-responsive/datatables.responsive
+ *= require boostrapv3/bootstrap
+ *= require boostrapv3/bootstrap-theme
+ *= require font-awesome/css/font-awesome
+ *= require animate.min
+ *= require jquery-scrollbar/jquery.scrollbar
  *= require style
- *= require select2
- *= require select2-bootstrap
- *= require iCheck/custom.css
+ *= require responsive
+ *= require custom-icon-set
+ *= require iCheck/custom
+ *= require custom
  */

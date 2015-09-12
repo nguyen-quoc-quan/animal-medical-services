@@ -7,16 +7,19 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery/jquery-2.1.1.js
-//= require bootstrap-sprockets
-//= require metisMenu/jquery.metisMenu.js
-//= require pace/pace.min.js
-//= require peity/jquery.peity.min.js
-//= require slimscroll/jquery.slimscroll.min.js
-//= require inspinia.js
-//= require validate/jquery.validate.js
-//= require select2
-//= require common_function
-
-//= require dropzone/dropzone.js
-//= require moment.js
+//= require bootstrapv3/bootstrap
+//= require breakpoints
+//= require jquery-unveil/jquery.unveil.min
+//= require jquery-scrollbar/jquery.scrollbar.min
+//= require jquery-block-ui/jqueryblockui
+//= require jquery-numberAnimate/jquery.animateNumbers
+//= require bootstrap-select2/select2
+//= require data-tables/jquery.dataTables
+//= require jquery-datatable/extra/js/dataTables.tableTools.min
+//= require datatables-responsive/datatables.responsive
+//= require datatables-responsive/lodash.min
+//= require datatables
+//= require iCheck/icheck.min
+//= require core
+//= require chat
+//= require demo

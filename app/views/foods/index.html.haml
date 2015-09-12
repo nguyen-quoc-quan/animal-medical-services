@@ -1,22 +1,23 @@
-.row.wrapper.border-bottom.white-bg.page-heading
-  .col-lg-10
-    %h2 Danh Sach
-  .wrapper.wrapper-content.animated.fadeInRight
-    .row
-      .col-lg-12
-        %div
+.content
+  .page-title
+    %i.icon-custom-left
+    %h3 Danh Sách Thức Ăn
+  .row-fluid
+    .span12
+      .grid.simple
+        .grid-title
+          %div
           %button.btn.btn-primary{"data-target" => "#newFood", "data-toggle" => "modal", :style => "margin-bottom:15px", :type => "button"}
-            New food
+            Tạo thức ăn
           %button.btn.btn-primary{"data-target" => "#newCategory", "data-toggle" => "modal", :style => "margin-bottom:15px", :type => "button"}
-            New category
+            Tạo Danh Mục Thức ăn
           %button.btn.btn-primary{"data-target" => "#newSpecification", "data-toggle" => "modal", :style => "margin-bottom:15px", :type => "button"}
-            New specification
+            Tạo Qui cách
           %button#delete-skus-btn.btn.btn-primary{:style => "margin-bottom:15px", :type => "button"}
-            Delete
-        = render 'new_food'
-        = render 'new_category'
-        = render 'new_specification'
-        #alert-message
+            Xóa
+      .grid-body
         %table#foods-list.table.table-striped.table-bordered.table-hover{"data-target" => foods_path}
   .custom-modal
-    / Place at bottom of page
+  = render 'new_food'
+  = render 'new_category'
+  = render 'new_specification'

@@ -23,7 +23,7 @@ class FoodsController < ApplicationController
     else
       @food = Food.new
       @categories_select = FoodCategory.all.collect{|c| [c.name, c.id]}
-      @specifications_select = FoodSpecification.all.collect{|t| [t.food_specification_type.name, t.id]}
+      @specifications_select = FoodSpecification.all.collect{|t| ["#{t.food_specification_type.name} (#{t.capacity})", t.id]}
       @specification_types_select = FoodSpecificationType.all.collect{|t| [t.name, t.id]}
       @specification = FoodSpecification.new
       @specification.food_specification_type = FoodSpecificationType.new

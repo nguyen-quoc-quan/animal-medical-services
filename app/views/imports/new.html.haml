@@ -1,14 +1,22 @@
-#alert-message
-= form_for @import, html: {class: 'form-inline', id: 'import-form', method: 'post'} do |f|
-  .col-md-12.well
-    .form-group
-      %label Date
-      = f.text_field :import_at, class: 'form-control', :required => true
-    .form-group
-      %label Pay
-      = f.number_field :pay, class: 'form-control', :required => true
-  .modal-footer
-    = link_to_add_fields "Add Food", f, :import_details, true
-    = link_to_add_fields "Add Medicine", f, :import_details, false
-    %button.btn.btn-white{"data-dismiss" => "modal", :type => "button"} Cancel
-    %button#create-import.btn.btn-primary{:type => "button"} Create
+.content
+  .page-title
+    %i.icon-custom-left
+    %h3 Hóa Đơn Nhập
+  .row-fluid
+    .span12
+      .grid.simple
+        .grid-body
+          #alert-message
+          = form_for @import, html: {class: 'form-inline', id: 'import-form', method: 'post'} do |f|
+            .col-md-12.well
+              .form-group
+                %label Date
+                = f.text_field :import_at, class: 'form-control', :required => true
+              .form-group
+                %label Pay
+                = f.number_field :pay, class: 'form-control', :required => true
+            .modal-footer
+              = link_to_add_fields "Add Food", f, :import_details, true
+              = link_to_add_fields "Add Medicine", f, :import_details, false
+              %button.btn.btn-white{"data-dismiss" => "modal", :type => "button"} Cancel
+              %button#create-import.btn.btn-primary{:type => "button"} Create

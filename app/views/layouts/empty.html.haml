@@ -12,12 +12,7 @@
     / Main javascript files
     = javascript_include_tag 'application'
     = csrf_meta_tags
-  %body{:class => "gray-bg #{controller_name} #{action_name}"}
-    / Main view
-    = yield
-    / Include javascript per-controller - vendor plugins
+  %body.error-body.no-top
+    .container
+      = yield
     = javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js")
-    / Include javascript per-view
-    / For demo purpose we include javascript in view but you can easily start SeedProject and organize it with Rails asset pipeline as you want
-    = yield :javascript
-    = yield :js_ready

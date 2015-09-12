@@ -1,27 +1,93 @@
-%nav.navbar-default.navbar-static-side{:role => "navigation"}
-  .sidebar-collapse
-    %ul#side-menu.nav
-      %li.nav-header
-        .dropdown.profile-element
-          / %span
-          /   %img.img-circle{:alt => "image", :src => ""}/
-          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-            %span.clear
-              %span.block.m-t-xs
-                %strong.font-bold QQ
-              %span.text-muted.text-xs.block
-                Art Director
-                %b.caret
-          %ul.dropdown-menu.animated.fadeInRight.m-t-xs
-            %li
-              %a{:href => "#"} Profile
-            %li
-              %a{:href => "#"} Contacts
-            %li
-              %a{:href => "#"} Mailbox
-            %li.divider
-            %li
-              =link_to "Logout", destroy_user_session_path, :method => :delete
-        .logo-element
-          ^^
-      = render 'layouts/admin_nav'
+#main-menu.page-sidebar
+  / BEGIN MINI-PROFILE
+  #main-menu-wrapper.page-sidebar-wrapper.scrollbar-dynamic
+    .user-info-wrapper
+      .profile-wrapper
+        / %img{:alt => "", "data-src" => "assets/profiles/avatar.jpg", "data-src-retina" => "assets/profiles/avatar2x.jpg", :height => "69", :src => "assets/profiles/avatar.jpg", :width => "69"}/
+      .user-info
+        .greeting Welcome
+        .username
+          John
+          %span.semi-bold Smith
+    / END MINI-PROFILE
+    / BEGIN SIDEBAR MENU
+    %p.menu-title
+      BROWSE
+      %span.pull-right
+        %a{:href => "javascript:;"}
+          %i.fa.fa-refresh
+    %ul
+      %li
+        %a{:href => "javascript:;"}
+          %i.fa.fa.fa-adjust
+          %span.title Thuốc
+          %span.arrow
+        %ul.sub-menu
+          %li
+            %a{:href => medicines_path} All
+          %li
+            %a{:href => "dashboard_2.html"} Dashboard v.2
+          %li
+            %a{:href => "dashboard_3.html"} Dashboard v.3
+          %li
+            %a{:href => "dashboard_4_1.html"} Dashboard v.4
+      %li
+        %a{:href => "javascript:;"}
+          %i.fa.fa.fa-adjust
+          %span.title Thức Ăn
+          %span.arrow
+        %ul.sub-menu
+          %li
+            %a{:href => foods_path} All
+          %li
+            %a{:href => "dashboard_2.html"} Dashboard v.2
+          %li
+            %a{:href => "dashboard_3.html"} Dashboard v.3
+          %li
+            %a{:href => "dashboard_4_1.html"} Dashboard v.4
+      %li
+        %a{:href => "javascript:;"}
+          %i.fa.fa.fa-adjust
+          %span.title Nhập
+          %span.arrow
+        %ul.sub-menu
+          %li
+            %a{:href => imports_path} All
+          %li
+            %a{:href => new_import_path} Nhap Hang
+      %li
+        %a{:href => "javascript:;"}
+          %i.fa.fa.fa-adjust
+          %span.title Xuất
+          %span.arrow
+        %ul.sub-menu
+          %li
+            %a{:href => sales_path} All
+          %li
+            %a{:href => new_sale_path} Them HD
+      %li
+        %a{:href => "javascript:;"}
+          %i.fa.fa.fa-adjust
+          %span.title Thống Kê
+          %span.arrow
+        %ul.sub-menu
+          %li
+            %a{:href => "index.html"} All
+          %li
+            %a{:href => "dashboard_2.html"} Dashboard v.2
+          %li
+            %a{:href => "dashboard_3.html"} Dashboard v.3
+          %li
+            %a{:href => "dashboard_4_1.html"} Dashboard v.4
+    .clearfix
+    / END SIDEBAR MENU
+%a.scrollup{:href => "#"} Scroll
+.footer-widget
+  .progress.transparent.progress-small.no-radius.no-margin
+    .progress-bar.animate-progress-bar.progress-bar-success{"data-percentage" => "79%"}
+  .pull-right
+    .details-status
+      %span.animate-number{"data-animation-duration" => "560", "data-value" => "86"}>
+      \%
+    %a{:href => "lockscreen.html"}
+      %i.fa.fa-power-off

@@ -2,12 +2,14 @@
 
 one:
   name: MyString
-  quality: 1
-  org_price: 1
-  sale_price: 1
+  description: MyText
+  quantity: 1
+  medicine_specifications_id: 1
+  medicine_categories_id: 1
 
 two:
   name: MyString
-  quality: 1
-  org_price: 1
-  sale_price: 1
+  description: MyText
+  quantity: 1
+  medicine_specifications_id: 1
+  medicine_categories_id: 1

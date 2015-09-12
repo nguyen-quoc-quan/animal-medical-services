@@ -1,17 +1,17 @@
-#newCategory.modal.inmodal{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+#newCategory.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
   .modal-dialog
     .modal-content.animated.bounceInRight
       .modal-header
         %button.close{"data-dismiss" => "modal", :type => "button"}
           %span{"aria-hidden" => "true"} ×
           %span.sr-only Close
-        %h4.modal-title New Food Category
+        %h4.modal-title Danh mục mới
       .modal-body
         #new-food-message
         = form_for @category, url: food_categories_path ,html: {class: 'm-t form-horizontal', id: 'category-form', method: 'post'} do |f|
           .form-group
-            %label.col-lg-2.control-label Name
+            %label.col-lg-2.control-label Tên
             .col-lg-10= f.text_field :name, class: 'form-control', :required => true
-          .modal-footer
-            %button.btn.btn-white{"data-dismiss" => "modal", :type => "button"} Cancel
-            %button#create-food-category.btn.btn-primary{:type => "button"} Create
+      .modal-footer
+        %button.btn.btn-white{"data-dismiss" => "modal", :type => "button"} Hủy
+        %button#create-food-category.btn.btn-primary{:type => "button"} Tạo
