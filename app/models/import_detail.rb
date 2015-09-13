@@ -16,8 +16,9 @@ class ImportDetail < ActiveRecord::Base
 		product.update_attributes({quantity: product.quantity - self.quantity})
 	end
 
-		def check_quantity
-			product = self.importable
-			self.errors.add("#{product.name}"," khong duoc nhap 0 san pham") if self.quantity < 1
+	def check_quantity
+		product = self.importable
+		self.errors.add("San pham"," khong duoc trong") and return unless product
+		self.errors.add("#{product.name}"," khong duoc nhap 0 san pham") unless self.quantity and self.quantity >= 1
 	end
 end

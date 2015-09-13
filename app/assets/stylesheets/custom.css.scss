@@ -6,3 +6,20 @@
 		background-color: #D8EAD1;
 	}
 }
+.view-sale, .view-import{
+	cursor: pointer;
+}
+
+#view-import-detail, #view-sale-detail{
+	.modal-body{
+		overflow: scroll;
+		.form-inline{
+			label{
+				display: inline-block;
+			}
+		}
+	}
+}
+#imports-list_wrapper, #sales-list_wrapper{
+	overflow: scroll;
+}

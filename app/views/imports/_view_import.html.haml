@@ -1,26 +1,26 @@
-#view-import-detail.modal.inmodal{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+#view-import-detail.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
   .modal-dialog
     .modal-content.animated.bounceInRight
       .modal-header
         %button.close{"data-dismiss" => "modal", :type => "button"}
           %span{"aria-hidden" => "true"} ×
           %span.sr-only Close
-        %h2 Chi Tiet Nhap
+        %h2 Chi Tiết Nhập
       .modal-body
         = form_for import, html: {class: 'form-inline', id: 'pay-form', method: 'put'} do |f|
           .form-group
-            %label{:for => ""} Pay
+            %label{:for => ""} Đã Trả
             = f.number_field :pay, class: 'form-control', :required => true
-          %button#pay-import.btn.btn-primary{:type => "button"} Save
+            %button#pay-import.btn.btn-primary{:type => "button"} Lưu
         %table.table
           %thead
             %tr
               %th #
-              %th Loai
-              %th Ten
-              %th So Luong
-              %th Gia
-              %th Tong
+              %th Loại
+              %th Tên
+              %th Số Lượng
+              %th Giá
+              %th Tổng
           %tbody
             - products.each_with_index do |product, index|
               %tr
@@ -33,12 +33,12 @@
             %tr
               %td{:colspan => "4"}
               %td
-                %b Tong:
+                %b Tổng:
               %td= import.amount
             %tr
               %td{:colspan => "4"}
               %td
-                %b No:
+                %b Nợ:
               %td= import.amount - import.pay
       .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Đóng

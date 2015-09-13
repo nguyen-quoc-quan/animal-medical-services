@@ -25,31 +25,31 @@ var Sale = {
         "autoWidth": false,
         "aoColumns": [
           {
-            "sTitle": 'Date',
+            "sTitle": 'Ngày',
             "bSortable": false,
             "sClass": "left",
             "mData": "date",
           },
           {
-            "sTitle": 'Customer',
+            "sTitle": 'Khách Hàng',
             "bSortable": false,
             "sClass": "left",
             "mData": "customer_name",
           },
           {
-            "sTitle": 'Amount',
+            "sTitle": 'Tổng',
             "bSortable": false,
             "sClass": "left",
             "mData": "amount",
           },
           {
-            "sTitle": 'Pay',
+            "sTitle": 'Đã Trả',
             "bSortable": false,
             "sClass": "left pay",
             "mData": "pay",
           },
           {
-            "sTitle": 'Owe',
+            "sTitle": 'Nợ',
             "bSortable": false,
             "sClass": "left owe",
             "mData": "owed",
@@ -99,9 +99,8 @@ var Sale = {
 	},
 
 	render_action: function(data, type, full, meta){
-		view_btn = "<i class='fa fa-eye view-sale' data-id = '"+data+"'></i>";
-		delete_btn = "<i class='fa fa-times delete-sale' data-id = '"+data+"'></i>"
-		return "<div data-id = '"+data+"'>"+view_btn + delete_btn+"</div>";
+		view_btn = "<i class='fa fa-eye fa-2x view-sale' data-id = '"+data+"'></i>";
+		return "<div data-id = '"+data+"'>"+view_btn+"</div>";
 	},
 
 	do_action: function(){
@@ -113,7 +112,6 @@ var Sale = {
 				dataType: 'json',
 				url: "/sales/"+ id,
 				success: function(data){
-					console.log('OK');
 					$('#custom-modal').html(data.attach).show();
 					$('#view-sale-detail').modal('show');
 					$("#pay-sale").click(function(){
@@ -207,12 +205,20 @@ var Sale = {
   },
 
   add_product: function(){
+    self = this;
   	$('.add_fields').click(function(e){
   		time = new Date().getTime();
   		regexp = new RegExp($(this).data('id'), 'g');
   		$(this).closest('form .modal-footer').before(($(this).data('fields').replace(regexp, time)));
   		e.preventDefault();
+      self.remove_product();
   	});
+  },
+
+  remove_product: function(){
+    $('.remove-product').click(function(){
+      $(this).closest(".well").remove();
+    });
   }
 };
 

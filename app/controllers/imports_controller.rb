@@ -46,15 +46,25 @@ class ImportsController < ApplicationController
   end
 
   def create
+    # import_params[:quantity] = 0 unless  import_params[:quantity] or !import_params[:quantity].is_a? Numeric
+    # import_params[:price] = 0 unless  import_params[:price] or !import_params[:price].is_a? Numeric
     import = Import.new(import_params)
-    import.save
-    if import.errors.messages.blank?
-      success_message = "<li>Created successfully!</li>"
-      render json: {messages: success_message}, status: 200
-    else
-      error_messages = import.errors.full_messages.map{|err| "<li>#{err}</li>"}
-      render json: {messages: error_messages.join("")}, status: 422
+    begin
+      import.save
+      if import.errors.messages.blank?
+        success_message = "<li>Created successfully!</li>"
+        render json: {messages: success_message}, status: 200
+      else
+        error_messages = import.errors.full_messages.map{|err| "<li>#{err}</li>"}
+        render json: {messages: error_messages.join("")}, status: 422
+      end
+    rescue Exception => e
+      p "==============="
+      p e
+      error_messages = "<li>Something went swrong</li>"
+      render json: {messages: error_messages}, status: 422
     end
+    
   end
 
   def update

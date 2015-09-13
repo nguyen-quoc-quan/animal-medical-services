@@ -56,14 +56,21 @@ class SalesController < ApplicationController
   end
 
   def create
+    sale_params[:sale_details_attributes][:quantity] = 0 unless  sale_params[:sale_details_attributes][:quantity] or !sale_params[:sale_details_attributes][:quantity].is_a? Numeric
+    sale_params[:sale_details_attributes][:price] = 0 unless  sale_params[:sale_details_attributes][:price] or !sale_params[:sale_details_attributes][:price].is_a? Numeric
     sale = Sale.new(sale_params)
-    sale.save
-    if sale.errors.messages.blank?
-      success_message = "<li>Created successfully!</li>"
-      render json: {messages: success_message}, status: 200
-    else
-      error_messages = sale.errors.full_messages.map{|err| "<li>#{err}</li>"}
-      render json: {messages: error_messages.join("")}, status: 422
+    begin
+      sale.save
+      if sale.errors.messages.blank?
+        success_message = "<li>Created successfully!</li>"
+        render json: {messages: success_message}, status: 200
+      else
+        error_messages = sale.errors.full_messages.map{|err| "<li>#{err}</li>"}
+        render json: {messages: error_messages.join("")}, status: 422
+      end
+    rescue Exception => e
+      error_messages = "<li>Something went swrong</li>"
+      render json: {messages: error_messages}, status: 422
     end
   end
 

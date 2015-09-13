@@ -17,7 +17,7 @@ var Import = {
         "iDisplayLength": 10,
          stateSave: true,
          "oLanguage": {
-          "sSearchPlaceholder": "Hoa Don Nhap",
+          "sSearchPlaceholder": "Hóa Đơn Nhập",
         },
         "bInfo": true,
 
@@ -25,25 +25,25 @@ var Import = {
         "autoWidth": false,
         "aoColumns": [
           {
-            "sTitle": 'Date',
+            "sTitle": 'Ngày',
             "bSortable": false,
             "sClass": "left",
             "mData": "date",
           },
           {
-            "sTitle": 'Amount',
+            "sTitle": 'Tổng',
             "bSortable": false,
             "sClass": "left",
             "mData": "amount",
           },
           {
-            "sTitle": 'Pay',
+            "sTitle": 'Đã Trả',
             "bSortable": false,
             "sClass": "left pay",
             "mData": "pay",
           },
           {
-            "sTitle": 'Owe',
+            "sTitle": 'Nợ',
             "bSortable": false,
             "sClass": "left owe",
             "mData": "owed",
@@ -93,9 +93,8 @@ var Import = {
   },
 
   render_action: function(data, type, full, meta){
-    view_btn = "<i class='fa fa-eye view-import' data-id = '"+data+"'></i>";
-    delete_btn = "<i class='fa fa-times delete-import' data-id = '"+data+"'></i>"
-    return "<div data-id = '"+data+"'>"+view_btn + delete_btn+"</div>";
+    view_btn = "<i class='fa fa-eye fa-2x view-import' data-id = '"+data+"'></i>";
+    return "<div data-id = '"+data+"'>"+view_btn+"</div>";
   },
 
   do_action: function(){
@@ -202,12 +201,22 @@ var Import = {
   },
 
   add_product: function(){
+    self = this;
   	$('.add_fields').click(function(e){
   		time = new Date().getTime();
   		regexp = new RegExp($(this).data('id'), 'g');
   		$(this).closest('form .modal-footer').before(($(this).data('fields').replace(regexp, time)));
   		e.preventDefault();
+      $('.remove-product').unbind('click');
+      self.remove_product();
+      $(this).closest('form').find('.well').last().find('select').select2({ width: 'resolve' });
   	});
+  },
+
+  remove_product: function(){
+    $('.remove-product').click(function(){
+      $(this).closest(".well").remove();
+    });
   }
 };
 

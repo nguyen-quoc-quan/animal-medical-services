@@ -10,13 +10,13 @@
           = form_for @import, html: {class: 'form-inline', id: 'import-form', method: 'post'} do |f|
             .col-md-12.well
               .form-group
-                %label Date
+                %label Ngày
                 = f.text_field :import_at, class: 'form-control', :required => true
               .form-group
-                %label Pay
+                %label Đã Trả
                 = f.number_field :pay, class: 'form-control', :required => true
             .modal-footer
-              = link_to_add_fields "Add Food", f, :import_details, true
-              = link_to_add_fields "Add Medicine", f, :import_details, false
-              %button.btn.btn-white{"data-dismiss" => "modal", :type => "button"} Cancel
-              %button#create-import.btn.btn-primary{:type => "button"} Create
+              = link_to_add_fields "Thêm Thức Ăn", f, :import_details, true
+              = link_to_add_fields "Thêm Thuốc", f, :import_details, false
+              %button.btn.btn-white{"data-dismiss" => "modal", :type => "button"} Hủy
+              %button#create-import.btn.btn-primary{:type => "button"} Tạo

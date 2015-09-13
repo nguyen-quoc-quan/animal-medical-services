@@ -18,7 +18,7 @@ var Food = {
         "iDisplayLength": 10,
          stateSave: true,
          "oLanguage": {
-          "sSearchPlaceholder": "Thuc An",
+          "sSearchPlaceholder": "Tìm Kiếm",
         },
         "bInfo": true,
 
@@ -26,25 +26,25 @@ var Food = {
         "autoWidth": false,
         "aoColumns": [
           {
-            "sTitle": 'Name',
+            "sTitle": 'Tên',
             "bSortable": true,
             "sClass": "left",
             "mData": "name",
           },
           {
-            "sTitle": 'Category',
+            "sTitle": 'Danh Mục',
             "bSortable": true,
             "sClass": "left",
             "mData": "category",
           },
           {
-            "sTitle": 'Type',
+            "sTitle": 'Loại',
             "bSortable": true,
             "sClass": "left",
             "mData": "type",
           },
           {
-            "sTitle": 'Quantity',
+            "sTitle": 'Số Lượng',
             "bSortable": true,
             "sClass": "left",
             "mData": "quantity",

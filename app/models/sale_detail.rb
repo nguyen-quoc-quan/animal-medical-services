@@ -18,7 +18,8 @@ class SaleDetail < ActiveRecord::Base
 
 	def check_quantity
 		product = self.saleable
+		self.errors.add("San pham"," khong duoc trong") and return unless product
+		self.errors.add("#{product.name}"," khong duoc ban 0 san pham") and return unless self.quantity and self.quantity >= 1
 		self.errors.add("#{product.name}","Khong du hang (#{product.quantity})") if product.quantity < 1 || product.quantity < self.quantity
-		self.errors.add("#{product.name}"," khong duoc ban 0 san pham") if self.quantity < 1
 	end
 end

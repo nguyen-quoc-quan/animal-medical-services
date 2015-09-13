@@ -19,7 +19,7 @@ var Medicine = {
         "iDisplayLength": 10,
          stateSave: true,
          "oLanguage": {
-          "sSearchPlaceholder": "Thuoc",
+          "sSearchPlaceholder": "Tìm Kiếm",
         },
         "bInfo": true,
 
@@ -27,25 +27,25 @@ var Medicine = {
         "autoWidth": false,
         "aoColumns": [
           {
-            "sTitle": 'Name',
+            "sTitle": 'Tên',
             "bSortable": true,
             "sClass": "left",
             "mData": "name",
           },
           {
-            "sTitle": 'Category',
+            "sTitle": 'Danh Mục',
             "bSortable": true,
             "sClass": "left",
             "mData": "category",
           },
           {
-            "sTitle": 'Type',
+            "sTitle": 'Loại',
             "bSortable": true,
             "sClass": "left",
             "mData": "type",
           },
           {
-            "sTitle": 'Quantity',
+            "sTitle": 'Số Lượng',
             "bSortable": true,
             "sClass": "left",
             "mData": "quantity",
