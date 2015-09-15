@@ -14,7 +14,7 @@ class FoodsController < ApplicationController
           id: m.id,
           name: m.name,
           category: m.food_category.name,
-          type: m.food_specification.food_specification_type.name,
+          type: "#{m.food_specification.food_specification_type.name} (#{m.food_specification.capacity})",
           quantity: m.quantity
         }
       end

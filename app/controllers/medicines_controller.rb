@@ -18,7 +18,7 @@ class MedicinesController < ApplicationController
           id: m.id,
           name: m.name,
           category: m.medicine_category.name,
-          type: m.medicine_specification.medicine_specification_type.name,
+          type: "#{m.medicine_specification.medicine_specification_type.name} (#{m.medicine_specification.capacity})",
           quantity: m.quantity
         }
       end

@@ -8,7 +8,7 @@ class ImportsController < ApplicationController
       search_text = params["search_text"] || ""
       imports = Import.all
       imports_count = imports.count
-      imports = imports.order('import_at DESC').limit(params[:length]).offset(params[:start])
+      imports = imports.order('import_at DESC, id DESC').limit(params[:length]).offset(params[:start])
       data = []
       imports.each do |s|
         amount = s.amount
@@ -46,8 +46,6 @@ class ImportsController < ApplicationController
   end
 
   def create
-    # import_params[:quantity] = 0 unless  import_params[:quantity] or !import_params[:quantity].is_a? Numeric
-    # import_params[:price] = 0 unless  import_params[:price] or !import_params[:price].is_a? Numeric
     import = Import.new(import_params)
     begin
       import.save

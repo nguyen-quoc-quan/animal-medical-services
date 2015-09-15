@@ -39,7 +39,7 @@ var Medicine = {
             "mData": "category",
           },
           {
-            "sTitle": 'Loại',
+            "sTitle": 'Qui Cách',
             "bSortable": true,
             "sClass": "left",
             "mData": "type",

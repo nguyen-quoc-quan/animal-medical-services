@@ -15,7 +15,7 @@ var Import = {
         "bPaginate": true,
         // "bProcessing": true,
         "iDisplayLength": 10,
-         stateSave: true,
+         // stateSave: true,
          "oLanguage": {
           "sSearchPlaceholder": "Hóa Đơn Nhập",
         },
@@ -174,7 +174,7 @@ var Import = {
         success: function(data){
           // $('#newSku').fadeOut('slow');
           $('#newMedicine').modal('hide');
-          $('#import-form')[0].reset();
+          // $('#import-form')[0].reset();
           $('#alert-message').html('');
           success_msg = data.messages;
           success_html = '<div class="alert alert-success alert-dismissable">' +
@@ -184,7 +184,7 @@ var Import = {
           '</ul>' +
           '</div>' ;
           $('#alert-message').html(success_html);
-          $('#import-list').DataTable().draw();
+          $(".food-detail, .medicine-detail").remove();
         },
         error: function(data){
           error_html = '<div class="alert alert-danger alert-dismissable">' +
@@ -223,6 +223,11 @@ var Import = {
 $(function(){
 	Import.init();
 	Import.add_product();
+  $('#import_import_at').datepicker({
+      autoclose: true,
+      todayHighlight: true,
+      format: "dd-mm-yyyy"
+    }).datepicker("setDate", new Date());
 	$('.i-checks').iCheck({
     checkboxClass: 'icheckbox_square-green',
     radioClass: 'iradio_square-green',

@@ -11,75 +11,7 @@
           %span.semi-bold Smith
     / END MINI-PROFILE
     / BEGIN SIDEBAR MENU
-    %p.menu-title
-      BROWSE
-      %span.pull-right
-        %a{:href => "javascript:;"}
-          %i.fa.fa-refresh
-    %ul
-      %li
-        %a{:href => "javascript:;"}
-          %i.fa.fa.fa-adjust
-          %span.title Thuốc
-          %span.arrow
-        %ul.sub-menu
-          %li
-            %a{:href => medicines_path} All
-          %li
-            %a{:href => "dashboard_2.html"} Dashboard v.2
-          %li
-            %a{:href => "dashboard_3.html"} Dashboard v.3
-          %li
-            %a{:href => "dashboard_4_1.html"} Dashboard v.4
-      %li
-        %a{:href => "javascript:;"}
-          %i.fa.fa.fa-adjust
-          %span.title Thức Ăn
-          %span.arrow
-        %ul.sub-menu
-          %li
-            %a{:href => foods_path} All
-          %li
-            %a{:href => "dashboard_2.html"} Dashboard v.2
-          %li
-            %a{:href => "dashboard_3.html"} Dashboard v.3
-          %li
-            %a{:href => "dashboard_4_1.html"} Dashboard v.4
-      %li
-        %a{:href => "javascript:;"}
-          %i.fa.fa.fa-adjust
-          %span.title Nhập
-          %span.arrow
-        %ul.sub-menu
-          %li
-            %a{:href => imports_path} All
-          %li
-            %a{:href => new_import_path} Nhap Hang
-      %li
-        %a{:href => "javascript:;"}
-          %i.fa.fa.fa-adjust
-          %span.title Xuất
-          %span.arrow
-        %ul.sub-menu
-          %li
-            %a{:href => sales_path} All
-          %li
-            %a{:href => new_sale_path} Them HD
-      %li
-        %a{:href => "javascript:;"}
-          %i.fa.fa.fa-adjust
-          %span.title Thống Kê
-          %span.arrow
-        %ul.sub-menu
-          %li
-            %a{:href => "index.html"} All
-          %li
-            %a{:href => "dashboard_2.html"} Dashboard v.2
-          %li
-            %a{:href => "dashboard_3.html"} Dashboard v.3
-          %li
-            %a{:href => "dashboard_4_1.html"} Dashboard v.4
-    .clearfix
+    =render 'layouts/admin_nav'
     / END SIDEBAR MENU
 %a.scrollup{:href => "#"} Scroll
 .footer-widget

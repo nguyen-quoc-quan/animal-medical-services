@@ -11,7 +11,7 @@
             .col-md-12.well
               .form-group
                 %label Ngày
-                = f.text_field :import_at, class: 'form-control', :required => true
+                = f.text_field :import_at, class: 'form-control', :required => true, readonly: true
               .form-group
                 %label Đã Trả
                 = f.number_field :pay, class: 'form-control', :required => true

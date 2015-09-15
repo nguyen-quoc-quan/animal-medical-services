@@ -14,6 +14,7 @@
 //= require jquery-block-ui/jqueryblockui
 //= require jquery-numberAnimate/jquery.animateNumbers
 //= require bootstrap-select2/select2
+//= require bootstrap-datepicker/bootstrap-datepicker
 //= require data-tables/jquery.dataTables
 //= require jquery-datatable/extra/js/dataTables.tableTools.min
 //= require datatables-responsive/datatables.responsive

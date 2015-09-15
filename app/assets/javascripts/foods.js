@@ -16,7 +16,7 @@ var Food = {
         "bPaginate": true,
         // "bProcessing": true,
         "iDisplayLength": 10,
-         stateSave: true,
+         // stateSave: true,
          "oLanguage": {
           "sSearchPlaceholder": "Tìm Kiếm",
         },
@@ -38,7 +38,7 @@ var Food = {
             "mData": "category",
           },
           {
-            "sTitle": 'Loại',
+            "sTitle": 'Qui Cách',
             "bSortable": true,
             "sClass": "left",
             "mData": "type",
