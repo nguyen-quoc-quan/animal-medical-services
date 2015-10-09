@@ -1,16 +1,11 @@
-%p#notice= notice
-%p
-  %strong First name:
-  = @customer.first_name
-%p
-  %strong Last name:
-  = @customer.last_name
-%p
-  %strong Address:
-  = @customer.address
-%p
-  %strong Phone:
-  = @customer.phone
-= link_to 'Edit', edit_customer_path(@customer)
-|
-= link_to 'Back', customers_path
+.content
+  .page-title
+    %i.icon-custom-left
+    %h3 Danh Sách
+  .row-fluid
+    .span12
+      .grid.simple
+        .grid-body
+          %table#sales-list.table.table-hover.table-condensed{"data-target" => customer_path(@customer)}
+  #custom-modal
+    / Place at bottom of page

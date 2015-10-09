@@ -1,0 +1,21 @@
+#view-customer-detail.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content.animated.bounceInRight
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+          %span.sr-only Close
+        %h2 Thông Tin Khách Hàng
+      .modal-body
+        = form_for customer, html: {class: 'form-horizontal', id: 'customer-form', method: 'put'} do |f|
+          .form-group
+            = f.text_field :last_name, class: 'form-control', :required => true
+          .form-group
+            = f.text_field :first_name, class: 'form-control', :required => true
+          .form-group
+            = f.text_field :phone, class: 'form-control', :required => true
+          .form-group
+            = f.text_field :address, class: 'form-control', :required => true
+      .modal-footer
+        %button#update-customer.btn.btn-primary{:type => "button"} Lưu
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Đóng

@@ -1,0 +1,26 @@
+#newCustomer.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content.animated.bounceInRight
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+          %span.sr-only Close
+        %h4.modal-title Khách Hàng Mới
+      .modal-body
+        #new-customer-message
+        = form_for @customer, url: customers_path ,html: {class: 'm-t form-horizontal', id: 'customer-form', method: 'post'} do |f|
+          .form-group
+            %label.col-lg-2.control-label Họ
+            .col-lg-10= f.text_field :last_name, class: 'form-control', :required => true
+          .form-group
+            %label.col-lg-2.control-label Tên
+            .col-lg-10= f.text_field :first_name, class: 'form-control', :required => true
+          .form-group
+            %label.col-lg-2.control-label SĐT
+            .col-lg-10= f.text_field :phone, class: 'form-control', :required => true
+          .form-group
+            %label.col-lg-2.control-label Địa Chỉ
+            .col-lg-10= f.text_field :address, class: 'form-control', :required => true
+      .modal-footer
+        %button.btn.btn-white{"data-dismiss" => "modal", :type => "button"} Hủy
+        %button#create-customer.btn.btn-primary{:type => "button"} Tạo
