@@ -11,7 +11,7 @@
             .col-md-12.well
               .form-group
                 %label Date
-                = f.text_field :sale_at, class: 'form-control', :required => true
+                = f.text_field :sale_at, class: 'form-control', :required => true, :readonly=>true
               .form-group
                 %label Customer
                 = f.select :customer_id, options_for_select(@customers_select),{include_blank: false}, class: 'form-control'

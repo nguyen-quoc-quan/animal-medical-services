@@ -9,29 +9,32 @@ class MedicinesController < ApplicationController
 
   def index
     if request.xhr?
-      page = params[:page].to_i || 0
-      per_page = params[:per_page].to_i || 10
-      medicines = Medicine.all
+      search_text = params[:search_text]
+      medicines = search_text ? Medicine.where("name like ?", "%#{search_text}%") : Medicine.all
+      total_medicines =  medicines.count
+      medicines = medicines.order("#{params[:sort].keys.first} #{params[:sort].values.first}")
+      medicines = medicines.limit(params[:length]).offset(params[:start])
       data = []
       medicines.each do |m|
         data << {
           id: m.id,
           name: m.name,
           category: m.medicine_category.name,
-          type: "#{m.medicine_specification.medicine_specification_type.name} (#{m.medicine_specification.capacity})",
+          type: "#{m.medicine_specification.medicine_specification_type.name} (#{m.medicine_specification.capacity} #{m.medicine_specification.capacity_type.name})",
           quantity: m.quantity
         }
       end
-      total_medicines =  medicines.count
       render json: {"aaData" =>  data,"iTotalRecords"=>total_medicines,"iTotalDisplayRecords"=>total_medicines}, status: 200
     else
       @medicine = Medicine.new
       @categories_select = MedicineCategory.all.collect{|c| [c.name, c.id]}
-      @specifications_select = MedicineSpecification.all.collect{|t| ["#{t.medicine_specification_type.name} (#{t.capacity})", t.id]}
+      @specifications_select = MedicineSpecification.all.collect{|t| ["#{t.medicine_specification_type.name} (#{t.capacity} #{t.capacity_type.name})", t.id]}
       @specification_types_select = MedicineSpecificationType.all.collect{|t| [t.name, t.id]}
+      @capacity_type_select = CapacityType.all.collect{|c| [c.name, c.id]}
       @specification = MedicineSpecification.new
       @specification.medicine_specification_type = MedicineSpecificationType.new
       @category = MedicineCategory.new
+      @capacity_type = CapacityType.new
     end
   end
 
@@ -75,6 +78,6 @@ class MedicinesController < ApplicationController
     end
 
     def medicine_params
-      params.require(:medicine).permit(:name, :description, :quantity, :medicine_specification_id, :medicine_category_id)
+      params.require(:medicine).permit(:name, :description, :quantity, :medicine_specification_id, :medicine_category_id, :capacity_type_id)
     end
 end

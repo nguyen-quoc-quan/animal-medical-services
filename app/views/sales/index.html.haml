@@ -5,6 +5,16 @@
   .row-fluid
     .span12
       .grid.simple
+        .grid-title
+          %div
+            %form.form-inline#filter-form
+              .form-group
+                %input.form-control#date-from{type: 'text', placeholder: 'Từ ngày', :readonly=>true}
+              .form-group
+                %input.form-control#date-to{type: 'text', placeholder: 'Đến ngày', :readonly=>true}
+              .form-group
+                %button.btn.btn-primary.form-control#filter-btn{type: 'button'}
+                  Lọc
         .grid-body
           %table#sales-list.table.table-hover.table-condensed{"data-target" => sales_path}
   #custom-modal

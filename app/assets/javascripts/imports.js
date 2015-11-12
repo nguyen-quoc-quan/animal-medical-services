@@ -209,7 +209,7 @@ var Import = {
   		e.preventDefault();
       $('.remove-product').unbind('click');
       self.remove_product();
-      $(this).closest('form').find('.well').last().find('select').select2({ width: 'resolve' });
+      $(this).closest('form').find('.well').last().find('select').select2({ width: 'off' });
   	});
   },
 

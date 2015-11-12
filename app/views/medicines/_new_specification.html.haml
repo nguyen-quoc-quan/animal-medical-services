@@ -7,7 +7,7 @@
           %span.sr-only Close
         %h4.modal-title Qui Cách Mới
       .modal-body
-        #new-medicine-message
+        #new-medicine-specification-message
         .radio.i-checks
           %label
             %input#create-new-specification{:checked => "checked", :name => "specification", :type => "radio", :value => "0"}/
@@ -26,7 +26,10 @@
                 = ff.text_field :name, class: 'form-control', :required => true
           .form-group
             %label.col-lg-2.control-label Qui cách
-            .col-lg-10= f.select :medicine_specification_type_id, options_for_select(@specification_types_select),{include_blank: false}, class: 'form-control'
+            .col-lg-10= f.select :medicine_specification_type_id, options_for_select(@specification_types_select),{include_blank: "Select"}, class: 'form-control'
+          .form-group
+            %label.col-lg-2.control-label Loại chứa
+            .col-lg-10= f.select :capacity_type_id, options_for_select(@capacity_type_select),{include_blank: "Select"}, class: 'form-control'
           .form-group
             %label.col-lg-2.control-label Sức chứa
             .col-lg-10

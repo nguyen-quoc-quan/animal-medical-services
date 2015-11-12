@@ -1,17 +1,17 @@
-#newCategory.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+#newCapacityType.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
   .modal-dialog
     .modal-content.animated.bounceInRight
       .modal-header
         %button.close{"data-dismiss" => "modal", :type => "button"}
           %span{"aria-hidden" => "true"} ×
           %span.sr-only Close
-        %h4.modal-title Danh mục mới
+        %h4.modal-title Loại Quy Cách Mới
       .modal-body
-        #new-food-category-message
-        = form_for @category, url: food_categories_path ,html: {class: 'm-t form-horizontal', id: 'category-form', method: 'post'} do |f|
+        #new-capacity-message
+        = form_for @capacity_type, url: capacity_types_path ,html: {class: 'm-t form-horizontal', id: 'capacity-form', method: 'post'} do |f|
           .form-group
             %label.col-lg-2.control-label Tên
             .col-lg-10= f.text_field :name, class: 'form-control', :required => true
       .modal-footer
         %button.btn.btn-white{"data-dismiss" => "modal", :type => "button"} Hủy
-        %button#create-food-category.btn.btn-primary{:type => "button"} Tạo
+        %button#create-capacity-type.btn.btn-primary{:type => "button"} Tạo

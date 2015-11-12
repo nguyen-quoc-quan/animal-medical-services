@@ -8,7 +8,9 @@ class SalesController < ApplicationController
       search_text = params["search_text"] || ""
       sales = Sale.joins(:customer).where("customers.last_name LIKE ? OR customers.first_name LIKE ?", "%#{search_text}%","%#{search_text}%");
       sales_count = sales.count
-      sales = sales.order('sale_at DESC').limit(params[:length]).offset(params[:start])
+      sales = sales.order("sales.#{params[:sort].keys.first} #{params[:sort].values.first}") if params[:sort][:sale_at]
+      sales = sales.select("sales.*, customers.*, concat(customers.last_name, ' ', customers.first_name) as full_name").order("#{params[:sort].keys.first} #{params[:sort].values.first}") if params[:sort][:full_name]
+      sales = sales.limit(params[:length]).offset(params[:start])
       data = []
       sales.each do |s|
         c = s.customer

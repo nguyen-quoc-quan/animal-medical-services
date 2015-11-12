@@ -7,7 +7,7 @@
           %span.sr-only Close
         %h4.modal-title Danh Mục Thuồc Mới
       .modal-body
-        #new-medicine-message
+        #new-medicine-category-message
         = form_for @category, url: medicine_categories_path ,html: {class: 'm-t form-horizontal', id: 'category-form', method: 'post'} do |f|
           .form-group
             %label.col-lg-2.control-label Tên

@@ -1,16 +1,16 @@
-%div{:class => "col-md-12 well #{type ? 'food-detail' : 'medicine-detail'}"}
+%div{:class => "col-sm-12 well #{type ? 'food-detail' : 'medicine-detail'}"}
   = ff.hidden_field(:saleable_type, value: 'Food') if type
   = ff.hidden_field(:saleable_type, value:'Medicine') unless type
-  .col-md-3
+  .col-sm-5
     .form-group
       - product = type ? "Chọn Thức Ăn" : "Chọn Thuốc"
       = ff.select :saleable_id, options_for_select(products_select),{include_blank: product}, class: 'form-control', :required => true
-  .col-md-4
+  .col-sm-3
     .form-group
-      = ff.number_field :quantity, class: 'form-control', :required => true, placeholder: "Số Lượng", value: ""
-  .col-md-4
+      = ff.number_field :quantity, class: 'form-control', :required => true, placeholder: "Số Lượng", value: "form-control"
+  .col-sm-3
     .form-group
       = ff.number_field :price, class: 'form-control', :required => true, placeholder: "Giá", value: ""
-  .col-md-1.text-right
+  .col-sm-1
     .form-group
       %button.btn.btn-warning.form-control.remove-product{:type => "button"} Xóa

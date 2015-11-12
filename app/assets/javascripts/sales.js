@@ -26,13 +26,13 @@ var Sale = {
         "aoColumns": [
           {
             "sTitle": 'Ngày',
-            "bSortable": false,
+            "bSortable": true,
             "sClass": "left",
             "mData": "date",
           },
           {
             "sTitle": 'Khách Hàng',
-            "bSortable": false,
+            "bSortable": true,
             "sClass": "left",
             "mData": "customer_name",
           },
@@ -83,9 +83,9 @@ var Sale = {
 		var result = [];
 		var tmp = aoData[2].value[0];
 		if (tmp.column == 0) {
-			result.push({"name": 'sort[date]', 'value': tmp.dir});
+			result.push({"name": 'sort[sale_at]', 'value': tmp.dir});
 		}else if (tmp.column == 1) {
-			result.push({"name": 'sort[customer_name]', 'value': tmp.dir});
+			result.push({"name": 'sort[full_name]', 'value': tmp.dir});
 		}else if (tmp.column == 2) {
 			result.push({"name": 'sort[amount]', 'value': tmp.dir});
 		}
@@ -212,6 +212,7 @@ var Sale = {
   		$(this).closest('form .modal-footer').before(($(this).data('fields').replace(regexp, time)));
   		e.preventDefault();
       self.remove_product();
+      $(this).closest('form').find('.well').last().find('select').select2({ width: 'off' });
   	});
   },
 
@@ -225,8 +226,26 @@ var Sale = {
 $(function(){
 	Sale.init();
 	Sale.add_product();
+  $('#sale_sale_at').datepicker({
+      autoclose: true,
+      todayHighlight: true,
+      format: "dd-mm-yyyy"
+    }).datepicker("setDate", new Date());
+  $('#date-from').datepicker({
+      autoclose: true,
+      todayHighlight: true,
+      format: "dd-mm-yyyy"
+    });
+  $('#date-to').datepicker({
+      autoclose: true,
+      todayHighlight: true,
+      format: "dd-mm-yyyy"
+    });
+
 	$('.i-checks').iCheck({
     checkboxClass: 'icheckbox_square-green',
     radioClass: 'iradio_square-green',
 	});
+
+  $("#sale_customer_id").select2();
 });

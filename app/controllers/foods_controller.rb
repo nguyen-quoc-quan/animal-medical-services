@@ -5,9 +5,11 @@ class FoodsController < ApplicationController
 
   def index
     if request.xhr?
-      page = params[:page].to_i || 0
-      per_page = params[:per_page].to_i || 10
-      foods = Food.all
+      search_text = params[:search_text]
+      foods = search_text ? Food.where("name like ?", "%#{search_text}%") : Food.all
+      total_foods =  foods.count
+      foods = foods.order("#{params[:sort].keys.first} #{params[:sort].values.first}")
+      foods = foods.limit(params[:length]).offset(params[:start])
       data = []
       foods.each do |m|
         data << {
@@ -18,16 +20,17 @@ class FoodsController < ApplicationController
           quantity: m.quantity
         }
       end
-      total_foods =  foods.count
       render json: {"aaData" =>  data,"iTotalRecords"=>total_foods,"iTotalDisplayRecords"=>total_foods}, status: 200
     else
       @food = Food.new
       @categories_select = FoodCategory.all.collect{|c| [c.name, c.id]}
-      @specifications_select = FoodSpecification.all.collect{|t| ["#{t.food_specification_type.name} (#{t.capacity})", t.id]}
+      @specifications_select = FoodSpecification.all.collect{|t| ["#{t.food_specification_type.name} (#{t.capacity} #{t.capacity_type.name})", t.id]}
       @specification_types_select = FoodSpecificationType.all.collect{|t| [t.name, t.id]}
       @specification = FoodSpecification.new
       @specification.food_specification_type = FoodSpecificationType.new
       @category = FoodCategory.new
+      @capacity_type = CapacityType.new
+      @capacity_type_select = CapacityType.all.collect{|c| [c.name, c.id]}
     end
   end
 

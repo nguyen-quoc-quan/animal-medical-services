@@ -48,6 +48,6 @@ class FoodSpecificationsController < ApplicationController
     end
 
     def food_specification_params
-      params.require(:food_specification).permit(:capacity, :food_specification_type_id, food_specification_type_attributes: [:name])
+      params.require(:food_specification).permit(:capacity, :food_specification_type_id, :capacity_type_id, food_specification_type_attributes: [:name])
     end
 end

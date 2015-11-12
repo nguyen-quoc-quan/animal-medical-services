@@ -48,6 +48,6 @@ class MedicineSpecificationsController < ApplicationController
     end
 
     def medicine_specification_params
-      params.require(:medicine_specification).permit(:capacity, :medicine_specification_type_id, medicine_specification_type_attributes: [:name])
+      params.require(:medicine_specification).permit(:capacity, :medicine_specification_type_id, :capacity_type_id, medicine_specification_type_attributes: [:name])
     end
 end
