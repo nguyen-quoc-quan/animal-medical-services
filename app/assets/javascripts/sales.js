@@ -65,6 +65,10 @@ var Sale = {
         ],
         fnServerData: function( sUrl, aoData, fnCallback ) {
           aoData = self.parse_data(aoData);
+          date_from = $("#date-from").val()
+          date_to = $("#date-to").val()
+          aoData.push({"name": "date_from", "value": date_from})
+          aoData.push({"name": "date_to", "value": date_to})
           $.ajax({
             type: "GET",
             url: url,
@@ -128,7 +132,7 @@ var Sale = {
 			        success: function(data){
 			          success_msg = data.messages;
 			          success_html = '<div class="alert alert-success alert-dismissable">' +
-			          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+			          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button"></button>' +
 			          '<ul>'+
 			          success_msg +
 			          '</ul>' +
@@ -139,7 +143,7 @@ var Sale = {
 			        },
 			        error: function(data){
 			          error_html = '<div class="alert alert-danger alert-dismissable">' +
-			          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+			          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button"></button>' +
 			          '<ul>'+
 			          data.responseJSON.messages +
 			          '</ul>' +
@@ -183,7 +187,7 @@ var Sale = {
           $('#alert-message').html('');
           success_msg = data.messages;
           success_html = '<div class="alert alert-success alert-dismissable">' +
-          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button"></button>' +
           '<ul>'+
           success_msg +
           '</ul>' +
@@ -193,7 +197,7 @@ var Sale = {
         },
         error: function(data){
           error_html = '<div class="alert alert-danger alert-dismissable">' +
-          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button"></button>' +
           '<ul>'+
           data.responseJSON.messages +
           '</ul>' +
@@ -248,4 +252,12 @@ $(function(){
 	});
 
   $("#sale_customer_id").select2();
+
+  $("#filter-btn").click(function(){
+    $('#sales-list').DataTable().draw();
+  });
+  $("#clear-filter-btn").click(function(){
+    $("#date-from, #date-to").val('');
+    $('#sales-list').DataTable().draw();
+  });
 });

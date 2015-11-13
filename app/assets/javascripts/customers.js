@@ -106,7 +106,7 @@ var Customer = {
               success: function(data){
                 success_msg = data.messages;
                 success_html = '<div class="alert alert-success alert-dismissable">' +
-                '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+                '<button aria-hidden="true" data-dismiss="alert" class="close" type="button"></button>' +
                 '<ul>'+
                 success_msg +
                 '</ul>' +
@@ -118,7 +118,7 @@ var Customer = {
               },
               error: function(data){
                 error_html = '<div class="alert alert-danger alert-dismissable">' +
-                '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+                '<button aria-hidden="true" data-dismiss="alert" class="close" type="button"></button>' +
                 '<ul>'+
                 data.responseJSON.messages +
                 '</ul>' +
@@ -162,7 +162,7 @@ var Customer = {
           $('#new-customer-message').html('');
           success_msg = data.messages;
           success_html = '<div class="alert alert-success alert-dismissable">' +
-          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button"></button>' +
           '<ul>'+
           success_msg +
           '</ul>' +
@@ -172,7 +172,7 @@ var Customer = {
         },
         error: function(data){
           error_html = '<div class="alert alert-danger alert-dismissable">' +
-          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button"></button>' +
           '<ul>'+
           data.responseJSON.messages +
           '</ul>' +

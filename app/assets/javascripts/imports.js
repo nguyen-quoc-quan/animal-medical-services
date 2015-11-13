@@ -123,7 +123,7 @@ var Import = {
               success: function(data){
                 success_msg = data.messages;
                 success_html = '<div class="alert alert-success alert-dismissable">' +
-                '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+                '<button aria-hidden="true" data-dismiss="alert" class="close" type="button"></button>' +
                 '<ul>'+
                 success_msg +
                 '</ul>' +
@@ -134,7 +134,7 @@ var Import = {
               },
               error: function(data){
                 error_html = '<div class="alert alert-danger alert-dismissable">' +
-                '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+                '<button aria-hidden="true" data-dismiss="alert" class="close" type="button"></button>' +
                 '<ul>'+
                 data.responseJSON.messages +
                 '</ul>' +
@@ -178,7 +178,7 @@ var Import = {
           $('#alert-message').html('');
           success_msg = data.messages;
           success_html = '<div class="alert alert-success alert-dismissable">' +
-          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button"></button>' +
           '<ul>'+
           success_msg +
           '</ul>' +
@@ -188,7 +188,7 @@ var Import = {
         },
         error: function(data){
           error_html = '<div class="alert alert-danger alert-dismissable">' +
-          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
+          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button"></button>' +
           '<ul>'+
           data.responseJSON.messages +
           '</ul>' +

@@ -7,6 +7,13 @@ class SalesController < ApplicationController
     if request.xhr?
       search_text = params["search_text"] || ""
       sales = Sale.joins(:customer).where("customers.last_name LIKE ? OR customers.first_name LIKE ?", "%#{search_text}%","%#{search_text}%");
+      if params[:date_from].present? && params[:date_to].present?
+        sales = sales.where("sale_at >= ? and sale_at <= ?", params[:date_from].to_date, params[:date_to].to_date)
+      elsif params[:date_from].present? && !params[:date_to].present?
+        sales = sales.where("sale_at >= ?", params[:date_from].to_date)
+      elsif !params[:date_from].present? && params[:date_to].present?
+        sales = sales.where("sale_at <= ?", params[:date_to].to_date)
+      end
       sales_count = sales.count
       sales = sales.order("sales.#{params[:sort].keys.first} #{params[:sort].values.first}") if params[:sort][:sale_at]
       sales = sales.select("sales.*, customers.*, concat(customers.last_name, ' ', customers.first_name) as full_name").order("#{params[:sort].keys.first} #{params[:sort].values.first}") if params[:sort][:full_name]
