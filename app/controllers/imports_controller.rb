@@ -37,8 +37,8 @@ class ImportsController < ApplicationController
 
   def new
     @import = Import.new
-    @foods_select = Food.all.collect{|t| [t.name, t.id]}
-    @medicines_select = Medicine.all.collect{|t| [t.name, t.id]}
+    @medicines_select = Product.where(product_type_id: 1).collect{|t| [t.name, t.id]}
+    @foods_select = Product.where(product_type_id: 2).collect{|t| [t.name, t.id]}
     respond_with(@import)
   end
 
@@ -57,8 +57,6 @@ class ImportsController < ApplicationController
         render json: {messages: error_messages.join("")}, status: 422
       end
     rescue Exception => e
-      p "==============="
-      p e
       error_messages = "<li>Something went swrong</li>"
       render json: {messages: error_messages}, status: 422
     end

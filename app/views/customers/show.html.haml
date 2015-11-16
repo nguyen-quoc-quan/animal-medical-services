@@ -5,6 +5,9 @@
   .row-fluid
     .span12
       .grid.simple
+        .grid-title
+          %button.btn.btn-primary{'data-id': @customer.id, class: "edit-customer", "data-target" => "#newCustomer", "data-toggle" => "modal", :style => "margin-bottom:15px", :type => "button"}
+            Sửa thông tin
         .grid-body
           %table#sales-list.table.table-hover.table-condensed{"data-target" => customer_path(@customer)}
   #custom-modal

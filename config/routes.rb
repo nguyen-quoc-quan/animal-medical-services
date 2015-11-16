@@ -2,9 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   
-  resources :food_categories
 
-  resources :medicine_categories
+  resources :product_categories
 
   resources :sale_details
 
@@ -16,26 +15,23 @@ Rails.application.routes.draw do
 
   resources :animal_groups
 
-  resources :medicine_specification_types
+  resources :product_specification_types
 
-  resources :medicine_specifications
+  resources :product_specifications
 
-  resources :medicines
-
-  resources :food_specification_types
-
-  resources :food_specifications
-
-  resources :foods
+  resources :products
 
   resources :customers
+
   resources :capacity_types
+
+  resources :pay_details
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'medicines#index'
+  root 'products#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

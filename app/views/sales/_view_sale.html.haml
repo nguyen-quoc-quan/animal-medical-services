@@ -7,14 +7,18 @@
           %span.sr-only Close
         %h2 Chi Tiết Hóa Đơn
       .modal-body
-        = form_for sale, html: {class: 'form-inline', id: 'pay-form', method: 'put'} do |f|
+        = form_for pay_detail, html: {class: 'form-inline', id: 'pay-form', method: 'post', data: {sale: sale.id}} do |f|
           .form-group
-            %label{:for => :sale_pay}
-              %b Đã trả
-            = f.number_field :pay, class: 'form-control', :required => true
+            %label{:for => :pay}
+              %b Trả
+            = f.hidden_field :payable_id
+            = f.hidden_field :payable_type
+            = f.number_field :pay, class: 'form-control', :required => true, min: 10000
             %button#pay-sale.btn.btn-primary{:type => "button"} Lưu
         %table.table
           %thead
+            %tr
+              %th.text-center{colspan: '6'}Chi Tiết Hóa Đơn
             %tr
               %th #
               %th Loại
@@ -40,6 +44,21 @@
               %td{:colspan => "4"}
               %td
                 %b Nợ:
-              %td= sale.amount - sale.pay
+              %td= payed
+
+        %table.table
+          %thead
+            %tr
+              %th.text-center{colspan: '3'} Chi Tiết Trả
+            %tr
+              %th #
+              %th Ngày
+              %th Trả
+          %tbody
+            - pay_details.each_with_index do |pay_detail, index|
+              %tr
+                %td= index+1
+                %td= pay_detail.pay_at.strftime('%d-%m-%Y')
+                %td= pay_detail.pay
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Đóng

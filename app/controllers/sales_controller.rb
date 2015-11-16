@@ -22,7 +22,7 @@ class SalesController < ApplicationController
       sales.each do |s|
         c = s.customer
         amount = s.amount
-        pay = s.pay
+        pay = s.pay_details.sum(:pay)
         data << {
           id: s.id,
           date: s.sale_at.strftime('%d-%m-%Y'),
@@ -35,13 +35,13 @@ class SalesController < ApplicationController
       end
       render json: {"aaData" =>  data,"iTotalRecords"=>sales_count,"iTotalDisplayRecords"=>sales_count}, status: 200
     else
-      # @medicine = Medicine.new
-      # @categories_select = MedicineCategory.all.collect{|c| [c.name, c.id]}
-      # @specifications_select = MedicineSpecification.all.collect{|t| [t.medicine_specification_type.name, t.id]}
-      # @specification_types_select = MedicineSpecificationType.all.collect{|t| [t.name, t.id]}
-      # @specification = MedicineSpecification.new
-      # @specification.medicine_specification_type = MedicineSpecificationType.new
-      # @category = MedicineCategory.new
+      # @product = product.new
+      # @categories_select = productCategory.all.collect{|c| [c.name, c.id]}
+      # @specifications_select = productSpecification.all.collect{|t| [t.product_specification_type.name, t.id]}
+      # @specification_types_select = productSpecificationType.all.collect{|t| [t.name, t.id]}
+      # @specification = productSpecification.new
+      # @specification.product_specification_type = productSpecificationType.new
+      # @category = productCategory.new
     end
   end
 
@@ -50,13 +50,13 @@ class SalesController < ApplicationController
     @sale.sale_details.each do |detail|
       products << [detail, detail.saleable]
     end
-    render json: {:attach=>render_to_string('_view_sale', :layout => false, locals:{products: products, sale: @sale})}, status: 200
+    render json: {:attach=>render_to_string('_view_sale', :layout => false, locals:{products: products, sale: @sale, pay_detail: @sale.pay_details.new, pay_details: @sale.pay_details.order(:pay_at), payed: @sale.amount - @sale.pay_details.sum(:pay)})}, status: 200
   end
 
   def new
     @sale = Sale.new
     @foods_select = Food.all.collect{|t| [t.name, t.id]}
-    @medicines_select = Medicine.all.collect{|t| [t.name, t.id]}
+    @products_select = product.all.collect{|t| [t.name, t.id]}
     @customers_select = Customer.all.collect{|t| [t.full_name, t.id]}
     respond_with(@sale)
   end
@@ -71,6 +71,7 @@ class SalesController < ApplicationController
     begin
       sale.save
       if sale.errors.messages.blank?
+        sale.pay_details.create(pay: params[:sale][:pay], pay_at: Date.today)
         success_message = "<li>Created successfully!</li>"
         render json: {messages: success_message}, status: 200
       else
@@ -112,7 +113,7 @@ class SalesController < ApplicationController
     end
 
     def sale_params
-      params.require(:sale).permit(:sale_at, :pay, :owe, :customer_id,
+      params.require(:sale).permit(:sale_at, :owe, :customer_id,
         sale_details_attributes:[
           :id, :quantity, :price, :sale_id, :saleable_id, :saleable_type
           ])

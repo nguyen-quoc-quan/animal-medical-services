@@ -5,12 +5,12 @@
     .form-group
       - product = type ? "Chọn Thức Ăn" : "Chọn Thuốc"
       = ff.select :saleable_id, options_for_select(products_select),{include_blank: product}, class: 'form-control', :required => true
-  .col-sm-3
+  .col-sm-2
     .form-group
       = ff.number_field :quantity, class: 'form-control', :required => true, placeholder: "Số Lượng", value: "form-control"
   .col-sm-3
     .form-group
       = ff.number_field :price, class: 'form-control', :required => true, placeholder: "Giá", value: ""
-  .col-sm-1
+  .col-sm-2
     .form-group
       %button.btn.btn-warning.form-control.remove-product{:type => "button"} Xóa

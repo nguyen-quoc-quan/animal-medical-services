@@ -1,0 +1,20 @@
+#newCategory.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content.animated.bounceInRight
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+          %span.sr-only Close
+        %h4.modal-title Danh Mục Mới
+      .modal-body
+        #new-product-category-message
+        = form_for @category, url: product_categories_path ,html: {class: 'm-t form-horizontal', id: 'category-form', method: 'post'} do |f|
+          .form-group
+            %label.col-lg-2.control-label Loại
+            .col-lg-10= f.select :product_type_id, options_for_select(@product_types_select), {include_blank: "Select"},class: 'form-control', :required => true
+          .form-group
+            %label.col-lg-2.control-label Tên
+            .col-lg-10= f.text_field :name, class: 'form-control', :required => true
+      .modal-footer
+        %button.btn.btn-white{"data-dismiss" => "modal", :type => "button"} Hủy
+        %button#create-product-category.btn.btn-primary{:type => "button"} Tạo

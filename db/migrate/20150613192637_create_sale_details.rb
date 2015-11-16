@@ -3,8 +3,7 @@ class CreateSaleDetails < ActiveRecord::Migration
     create_table :sale_details do |t|
       t.integer :quantity, default: 0
       t.integer :price, default: 0
-      t.integer :saleable_id
-      t.string  :saleable_type
+      t.integer :product_id
       t.integer :sale_id
 
       t.timestamps

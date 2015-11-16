@@ -122,7 +122,7 @@ var Sale = {
 						var url = $("#pay-form").attr('action');
 						console.log(url);
 						$.ajax({
-			        type: "PUT",
+			        type: "post",
 			        url: url,
 			        beforeSend: function(xhr) {
 			          xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
@@ -182,7 +182,7 @@ var Sale = {
         dataType: 'json',
         success: function(data){
           // $('#newSku').fadeOut('slow');
-          $('#newMedicine').modal('hide');
+          $('#newproduct').modal('hide');
           $('#sale-form')[0].reset();
           $('#alert-message').html('');
           success_msg = data.messages;

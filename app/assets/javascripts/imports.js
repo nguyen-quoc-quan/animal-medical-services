@@ -173,7 +173,7 @@ var Import = {
         dataType: 'json',
         success: function(data){
           // $('#newSku').fadeOut('slow');
-          $('#newMedicine').modal('hide');
+          $('#newproduct').modal('hide');
           // $('#import-form')[0].reset();
           $('#alert-message').html('');
           success_msg = data.messages;
@@ -184,7 +184,7 @@ var Import = {
           '</ul>' +
           '</div>' ;
           $('#alert-message').html(success_html);
-          $(".food-detail, .medicine-detail").remove();
+          $(".food-detail, .product-detail").remove();
         },
         error: function(data){
           error_html = '<div class="alert alert-danger alert-dismissable">' +

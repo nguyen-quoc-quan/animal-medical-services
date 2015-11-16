@@ -6,7 +6,7 @@
       - product = type ? "Chọn Thức Ăn" : "Chọn Thuốc"
       / %label Product
       = ff.select :importable_id, options_for_select(products_select),{include_blank: product}, class: 'form-control'
-  .col-sm-3
+  .col-sm-2
     .form-group
       / %label Quantity
       = ff.number_field :quantity, class: 'form-control', :required => true, placeholder: "Số Lượng", value: ""
@@ -14,6 +14,6 @@
     .form-group
       / %label Price
       = ff.number_field :price, class: 'form-control', :required => true, placeholder: "Giá", value: ""
-  .col-sm-1
+  .col-sm-2
     .form-group
       %button.btn.btn-warning.form-control.remove-product{:type => "button"} Xóa
