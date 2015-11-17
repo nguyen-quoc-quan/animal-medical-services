@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
           product_type: m.product_type.name,
           name: m.name,
           category: m.product_category.name,
-          type: "#{m.product_specification.product_specification_type.name} (#{m.product_specification.capacity} #{m.product_specification.capacity_type.name})",
+          type: "#{m.product_specification.product_specification_type.name} (#{m.product_specification.capacity} #{m.product_specification.capacity_type.sign})",
           quantity: m.quantity
         }
       end
@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
     else
       @product = Product.new
       @categories_select = ProductCategory.all.collect{|c| [c.name, c.id]}
-      @specifications_select = ProductSpecification.all.collect{|t| ["#{t.product_specification_type.name} (#{t.capacity} #{t.capacity_type.name})", t.id]}
+      @specifications_select = ProductSpecification.all.collect{|t| ["#{t.product_specification_type.name} (#{t.capacity} #{t.capacity_type.sign})", t.id]}
       @specification_types_select = ProductSpecificationType.all.collect{|t| [t.name, t.id]}
       @capacity_type_select = CapacityType.all.collect{|c| [c.name, c.id]}
       @specification = ProductSpecification.new

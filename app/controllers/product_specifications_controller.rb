@@ -25,7 +25,7 @@ class ProductSpecificationsController < ApplicationController
     product_specification.save
     if product_specification.errors.messages.blank?
       success_message = "<li>Created successfully!</li>"
-      render json: {messages: success_message, specification: {id: product_specification.id, name: "#{product_specification.product_specification_type.name} (#{product_specification.capacity} #{product_specification.capacity_type.name})"}}, status: 200
+      render json: {messages: success_message, specification: {id: product_specification.id, name: "#{product_specification.product_specification_type.name} (#{product_specification.capacity} #{product_specification.capacity_type.sign})"}}, status: 200
     else
       error_messages = product_specification.errors.full_messages.map{|err| "<li>#{err}</li>"}
       render json: {messages: error_messages.join("")}, status: 422
