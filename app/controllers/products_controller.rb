@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
       @categories_select = ProductCategory.all.collect{|c| [c.name, c.id]}
       @specifications_select = ProductSpecification.all.collect{|t| ["#{t.product_specification_type.name} (#{t.capacity} #{t.capacity_type.sign})", t.id]}
       @specification_types_select = ProductSpecificationType.all.collect{|t| [t.name, t.id]}
-      @capacity_type_select = CapacityType.all.collect{|c| [c.name, c.id]}
+      @capacity_type_select = CapacityType.all.collect{|c| [c.sign, c.id]}
       @specification = ProductSpecification.new
       @specification.product_specification_type = ProductSpecificationType.new
       @category = ProductCategory.new
