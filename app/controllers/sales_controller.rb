@@ -48,15 +48,15 @@ class SalesController < ApplicationController
   def show
     products = []
     @sale.sale_details.each do |detail|
-      products << [detail, detail.saleable]
+      products << [detail, detail.product]
     end
     render json: {:attach=>render_to_string('_view_sale', :layout => false, locals:{products: products, sale: @sale, pay_detail: @sale.pay_details.new, pay_details: @sale.pay_details.order(:pay_at), payed: @sale.amount - @sale.pay_details.sum(:pay)})}, status: 200
   end
 
   def new
     @sale = Sale.new
-    @foods_select = Food.all.collect{|t| [t.name, t.id]}
-    @products_select = product.all.collect{|t| [t.name, t.id]}
+    @foods_select = Product.where(product_type_id: 2).collect{|t| [t.name, t.id]}
+    @medicines_select = Product.where(product_type_id: 1).collect{|t| [t.name, t.id]}
     @customers_select = Customer.all.collect{|t| [t.full_name, t.id]}
     respond_with(@sale)
   end
@@ -115,7 +115,6 @@ class SalesController < ApplicationController
     def sale_params
       params.require(:sale).permit(:sale_at, :owe, :customer_id,
         sale_details_attributes:[
-          :id, :quantity, :price, :sale_id, :saleable_id, :saleable_type
-          ])
+          :id, :quantity, :price, :sale_id, :product_id ])
     end
 end

@@ -1,7 +1,7 @@
 .content
   .page-title
     %i.icon-custom-left
-    %h3 Danh Sách Thuốc
+    %h3 Danh Sách Sản Phẩm
   .row-fluid
     .span12
       .grid.simple
@@ -17,6 +17,9 @@
               Tạo Loại Qui Cách
             %button#delete-skus-btn.btn.btn-primary{:style => "margin-bottom:15px", :type => "button"}
               Xóa
+          / %div
+          /   %form.form-inline
+          /     %input.form-control{type: "text", placeholder: "tìm kiếm..."}
         .grid-body
           %table#products-list.table.table-hover.table-condensed{"data-target" => products_path}
   .custom-modal

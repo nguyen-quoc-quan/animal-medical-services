@@ -5,7 +5,7 @@
     .form-group
       - product = type ? "Chọn Thức Ăn" : "Chọn Thuốc"
       / %label Product
-      = ff.select :importable_id, options_for_select(products_select),{include_blank: product}, class: 'form-control'
+      = ff.select :product_id, options_for_select(products_select),{include_blank: product}, class: 'form-control'
   .col-sm-2
     .form-group
       / %label Quantity

@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
 	belongs_to :product_type
-	has_many :sale_details, as: :saleable
-	has_many :import_details, as: :importable
+	has_many :sale_details
+	has_many :import_details
 	belongs_to :product_category
 	belongs_to :product_specification
 

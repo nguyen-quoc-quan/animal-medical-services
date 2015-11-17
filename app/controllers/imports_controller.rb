@@ -12,7 +12,7 @@ class ImportsController < ApplicationController
       data = []
       imports.each do |s|
         amount = s.amount
-        pay = s.pay
+        pay = s.pay_details.sum(:pay)
         data << {
           id: s.id,
           date: s.import_at.strftime('%d-%m-%Y'),
@@ -30,9 +30,9 @@ class ImportsController < ApplicationController
   def show
     products = []
     @import.import_details.each do |detail|
-      products << [detail, detail.importable]
+      products << [detail, detail.product]
     end
-    render json: {:attach=>render_to_string('_view_import', :layout => false, locals:{products: products, import: @import})}, status: 200
+    render json: {:attach=>render_to_string('_view_import', :layout => false, locals:{products: products, import: @import, pay_detail: @import.pay_details.new, pay_details: @import.pay_details.order(:pay_at), payed: @import.amount - @import.pay_details.sum(:pay)})}, status: 200
   end
 
   def new
@@ -50,6 +50,7 @@ class ImportsController < ApplicationController
     begin
       import.save
       if import.errors.messages.blank?
+        import.pay_details.create(pay: params[:import][:pay], pay_at: Date.today)
         success_message = "<li>Created successfully!</li>"
         render json: {messages: success_message}, status: 200
       else
@@ -57,6 +58,8 @@ class ImportsController < ApplicationController
         render json: {messages: error_messages.join("")}, status: 422
       end
     rescue Exception => e
+      p "=================="
+      p e.message
       error_messages = "<li>Something went swrong</li>"
       render json: {messages: error_messages}, status: 422
     end
@@ -91,9 +94,8 @@ class ImportsController < ApplicationController
     end
 
     def import_params
-      params.require(:import).permit(:import_at, :pay, :owe,
+      params.require(:import).permit(:import_at, :owe,
                                     import_details_attributes:[
-                                      :id, :quantity, :price, :import_id, :importable_id, :importable_type
-                                    ])
+                                      :id, :quantity, :price, :import_id, :product_id])
     end
 end

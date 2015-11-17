@@ -19,7 +19,7 @@
                 %label Pay
                 = f.number_field :pay, class: 'form-control', :required => true
             .modal-footer
-              = link_to_add_fields "Add Food", f, :sale_details, true
-              = link_to_add_fields "Add Medicine", f, :sale_details, false
+              = link_to_add_fields "Thêm Thức Ăn", f, :sale_details, true
+              = link_to_add_fields "Thêm Thuốc", f, :sale_details, false
               %button.btn.btn-white{"data-dismiss" => "modal", :type => "button"} Cancel
               %button#create-sale.btn.btn-primary{:type => "button"} Create

@@ -4,7 +4,7 @@
   .col-sm-5
     .form-group
       - product = type ? "Chọn Thức Ăn" : "Chọn Thuốc"
-      = ff.select :saleable_id, options_for_select(products_select),{include_blank: product}, class: 'form-control', :required => true
+      = ff.select :product_id, options_for_select(products_select),{include_blank: product}, class: 'form-control', :required => true
   .col-sm-2
     .form-group
       = ff.number_field :quantity, class: 'form-control', :required => true, placeholder: "Số Lượng", value: "form-control"

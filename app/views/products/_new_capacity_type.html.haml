@@ -11,7 +11,7 @@
         = form_for @capacity_type, url: capacity_types_path ,html: {class: 'm-t form-horizontal', id: 'capacity-form', method: 'post'} do |f|
           .form-group
             %label.col-lg-2.control-label Tên
-            .col-lg-10= f.text_field :name, class: 'form-control', :required => true
+            .col-lg-10= f.text_field :name, class: 'form-control', :required => true, placeholder: "ml, kg,..."
       .modal-footer
         %button.btn.btn-white{"data-dismiss" => "modal", :type => "button"} Hủy
         %button#create-capacity-type.btn.btn-primary{:type => "button"} Tạo

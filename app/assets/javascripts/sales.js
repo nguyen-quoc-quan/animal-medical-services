@@ -183,7 +183,8 @@ var Sale = {
         success: function(data){
           // $('#newSku').fadeOut('slow');
           $('#newproduct').modal('hide');
-          $('#sale-form')[0].reset();
+          // $('#sale-form')[0].reset();
+          $('.food-detail, .medicine-detail').remove();
           $('#alert-message').html('');
           success_msg = data.messages;
           success_html = '<div class="alert alert-success alert-dismissable">' +

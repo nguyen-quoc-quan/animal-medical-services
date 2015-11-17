@@ -42,6 +42,6 @@ class SaleDetailsController < ApplicationController
     end
 
     def sale_detail_params
-      params.require(:sale_detail).permit(:quantity, :price, :saleable_id, :saleable_type, :bill_id)
+      params.require(:sale_detail).permit(:quantity, :price, :product_id, :sale_id)
     end
 end

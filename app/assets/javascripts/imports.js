@@ -113,7 +113,7 @@ var Import = {
             var url = $("#pay-form").attr('action');
             console.log(url);
             $.ajax({
-              type: "PUT",
+              type: "post",
               url: url,
               beforeSend: function(xhr) {
                 xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
@@ -184,7 +184,7 @@ var Import = {
           '</ul>' +
           '</div>' ;
           $('#alert-message').html(success_html);
-          $(".food-detail, .product-detail").remove();
+          $(".food-detail, .medicine-detail").remove();
         },
         error: function(data){
           error_html = '<div class="alert alert-danger alert-dismissable">' +
