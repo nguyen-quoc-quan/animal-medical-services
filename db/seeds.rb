@@ -10,3 +10,7 @@ User.create(email: "quan@gmail.com", password: "1qazxsw2", password_confirmation
 
 ProductType.create(name: "Thuốc")
 ProductType.create(name: "Thức ăn")
+CapacityType.create(name: "Mililit", sign: "ml")
+CapacityType.create(name: "Lit", sign: "l")
+CapacityType.create(name: "Kilogam", sign: "kg")
+CapacityType.create(name: "Gam", sign: "g")
