@@ -2,13 +2,13 @@
   / BEGIN MINI-PROFILE
   #main-menu-wrapper.page-sidebar-wrapper.scrollbar-dynamic
     .user-info-wrapper
-      .profile-wrapper
+      -# .profile-wrapper
         / %img{:alt => "", "data-src" => "assets/profiles/avatar.jpg", "data-src-retina" => "assets/profiles/avatar2x.jpg", :height => "69", :src => "assets/profiles/avatar.jpg", :width => "69"}/
       .user-info
         .greeting Welcome
         .username
-          John
-          %span.semi-bold Smith
+          =current_user.first_name
+          %span.semi-bold=current_user.last_name
     / END MINI-PROFILE
     / BEGIN SIDEBAR MENU
     =render 'layouts/admin_nav'
