@@ -14,3 +14,6 @@ CapacityType.create(name: "Mililit", sign: "ml")
 CapacityType.create(name: "Lit", sign: "l")
 CapacityType.create(name: "Kilogam", sign: "kg")
 CapacityType.create(name: "Gam", sign: "g")
+
+user = User.find_by_email('quan@gmail.com')
+user.update_attributes(first_name: "Quan", last_name: "Nguyen")
