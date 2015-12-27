@@ -2,7 +2,7 @@
 var Product = {
 	init: function(){
 		this.load_list();
-		// this.create_product();
+		this.create_product();
 		this.create_product_specification();
 		this.create_product_category();
 		this.init_radio_create_specification();

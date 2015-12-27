@@ -24,3 +24,4 @@
 //= require core
 //= require chat
 //= require demo
+//= require jquery.remotipart

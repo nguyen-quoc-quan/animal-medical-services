@@ -22,7 +22,8 @@ class ProductsController < ApplicationController
           name: m.name,
           category: m.product_category.name,
           type: "#{m.product_specification.product_specification_type.name} (#{m.product_specification.capacity} #{m.product_specification.capacity_type.sign})",
-          quantity: m.quantity
+          quantity: m.quantity,
+          picture: m.picture.url || 'http://52.34.56.101/upload/pictures/28/original/2.jpg'
         }
       end
       render json: {"aaData" =>  data,"iTotalRecords"=>total_products,"iTotalDisplayRecords"=>total_products}, status: 200
@@ -57,10 +58,13 @@ class ProductsController < ApplicationController
     product.save
     if product.errors.messages.blank?
       success_message = "<li>Created successfully!</li>"
-      render json: {messages: success_message}, status: 200
+      # render json: {messages: success_message}, status: 200
+      @result = true
     else
       error_messages = product.errors.full_messages.map{|err| "<li>#{err}</li>"}
-      render json: {messages: error_messages.join("")}, status: 422
+      # render json: {messages: error_messages.join("")}, status: 422
+      @result = false
+      @errors = error_messages.join("")
     end
   end
 
@@ -80,6 +84,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :description, :quantity, :product_specification_id, :product_category_id, :capacity_type_id, :product_type_id)
+      params.require(:product).permit(:name, :description, :quantity, :product_specification_id, :product_category_id, :capacity_type_id, :product_type_id, :picture)
     end
 end

@@ -50,3 +50,5 @@ gem 'bcrypt', '~> 3.1.7'
 gem "erb2haml", :group => :development
 gem 'haml'
 gem "cancan"
+gem "paperclip-storage-ftp"
+gem 'remotipart', '~> 1.2'

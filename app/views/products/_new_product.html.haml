@@ -8,7 +8,7 @@
         %h4.modal-title Sản Phẩm Mới
       .modal-body
         #new-product-message
-        = form_for @product, url: products_path ,html: {class: 'form-horizontal', id: 'product-form', method: 'post'} do |f|
+        = form_for @product, url: products_path ,html: {class: 'form-horizontal', id: 'product-form', method: 'post', multipart: true, remote: true} do |f|
           .form-group
             %label.col-lg-2.control-label Loại
             .col-lg-10= f.select :product_type_id, options_for_select(@product_types_select), {include_blank: "Select"},class: 'form-control', :required => true
@@ -23,7 +23,10 @@
             .col-lg-10= f.select :product_specification_id, options_for_select(@specifications_select), {include_blank: "Select"},class: 'form-control', :required => true
           .form-group
             %label.col-lg-2.control-label Mô tả
-            .col-lg-10= f.text_field :description, class: 'form-control', id: 'new-sku-eta'
+            .col-lg-10= f.text_field :description, class: 'form-control'
+          .form-group
+            %label.col-lg-2.control-label Hinh
+            .col-lg-10= f.file_field :picture, class: 'form-control'
       .modal-footer
         %button.btn.btn-white{"data-dismiss" => "modal", :type => "button"} Hủy
-        %button#create-product.btn.btn-primary{:type => "button"} Tạo
+        %button#create-productt.btn.btn-primary{:type => "submit", :form => 'product-form'} Tạo

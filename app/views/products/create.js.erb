@@ -1,0 +1,22 @@
+<%if @result%>
+$('#newProduct').modal('hide');
+$('#product-form')[0].reset();
+$('#new-product-message').html('');
+success_msg = "<li>Created successfully!</li>";
+success_html = '<div class="alert alert-success alert-dismissable">' +
+'<button aria-hidden="true" data-dismiss="alert" class="close" type="button"></button>' +
+'<ul>'+
+success_msg +
+'</ul>' +
+'</div>' ;
+$('#alert-message').html(success_html);
+$('#products-list').DataTable().draw();
+<%else%>
+error_html = '<div class="alert alert-danger alert-dismissable">' +
+          '<button aria-hidden="true" data-dismiss="alert" class="close" type="button"></button>' +
+          '<ul>'+
+          <%=@errors%> +
+          '</ul>' +
+          '</div>'
+$('#new-product-message').html(error_html);}
+<%end%>
